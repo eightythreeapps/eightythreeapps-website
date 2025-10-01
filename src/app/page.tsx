@@ -100,7 +100,7 @@ export default function Home() {
                 <Link 
                   href="/apps"
                   className="group px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2"
-                  style={{ backgroundColor: 'var(--accent)', color: 'white' }}
+                  style={{ backgroundColor: 'var(--accent)', color: 'var(--background)' }}
                 >
                   <span>View My Apps</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -174,7 +174,7 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center" 
-                         style={{ backgroundColor: 'var(--accent)', color: 'white' }}>
+                         style={{ backgroundColor: 'var(--accent)', color: 'var(--background)' }}>
                       {app.icon}
                     </div>
                     <span className="px-3 py-1 rounded-full text-sm font-medium glass"

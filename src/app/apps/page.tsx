@@ -88,7 +88,7 @@ export default function Apps() {
               <div className="space-y-6">
                 {/* App Header */}
                 <div className="flex items-center justify-between">
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${app.color} flex items-center justify-center text-white`}>
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${app.color} flex items-center justify-center`} style={{ color: 'var(--background)' }}>
                     {app.icon}
                   </div>
                   <span className="px-3 py-1 rounded-full text-sm font-medium glass"

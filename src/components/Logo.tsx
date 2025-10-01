@@ -56,7 +56,7 @@ export default function Logo({
     // Show light logo by default during SSR
     return (
       <Image
-        src="/logo-light.png"
+        src="/assets/logo-light.png"
         alt={alt}
         width={width}
         height={height}
@@ -68,7 +68,7 @@ export default function Logo({
 
   return (
     <Image
-      src={isDark ? "/logo-dark.png" : "/logo-light.png"}
+      src={isDark ? "/assets/logo-dark.png" : "/assets/logo-light.png"}
       alt={alt}
       width={width}
       height={height}

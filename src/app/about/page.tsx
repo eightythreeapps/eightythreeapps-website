@@ -73,7 +73,7 @@ export default function About() {
                 <div className="space-y-6">
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center" 
-                         style={{ backgroundColor: 'var(--accent)', color: 'white' }}>
+                         style={{ backgroundColor: 'var(--accent)', color: 'var(--background)' }}>
                       {skill.icon}
                     </div>
                     <div className="flex-1">
