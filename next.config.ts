@@ -1,6 +1,7 @@
 import { NextConfig } from 'next';
 
 const isProd = process.env.NODE_ENV === 'production';
+const isCustomDomain = process.env.CUSTOM_DOMAIN === 'true';
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
@@ -8,7 +9,7 @@ const nextConfig: NextConfig = {
     mdxRs: true,
   },
   output: 'export',
-  basePath: isProd ? '/eightythreeapps-website' : '',
+  basePath: isProd && !isCustomDomain ? '/eightythreeapps-website' : '',
   trailingSlash: true,
   images: {
     unoptimized: true,
