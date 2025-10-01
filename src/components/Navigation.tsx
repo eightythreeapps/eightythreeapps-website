@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import Logo from './Logo';
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -28,11 +29,8 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 rounded-lg" style={{ backgroundColor: 'var(--accent)' }}></div>
-            <span className="text-xl font-bold" style={{ color: 'var(--foreground)' }}>
-              EightyThree Apps
-            </span>
+          <Link href="/" className="flex items-center">
+            <Logo width={140} height={45} className="h-10 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}

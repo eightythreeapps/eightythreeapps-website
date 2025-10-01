@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  /* Light theme colors - Modern Purple/Indigo */
+  /* Light theme colors - Matching logo colors */
   --background: #ffffff;
-  --foreground: #1a1a1a;
+  --foreground: #212B36;
   --card-background: #f8fafc;
   --card-border: #e2e8f0;
-  --accent: #6366f1;
-  --accent-hover: #4f46e5;
+  --accent: #40D0E0;
+  --accent-hover: #20C997;
   --text-secondary: #64748b;
   --text-muted: #94a3b8;
   --glass-bg: rgba(248, 250, 252, 0.8);
@@ -15,32 +15,32 @@
 }
 
 [data-theme="dark"] {
-  /* Dark theme colors - Modern Purple/Indigo */
-  --background: #0f0f23;
-  --foreground: #f8fafc;
-  --card-background: #1e1b4b;
-  --card-border: #312e81;
-  --accent: #6366f1;
-  --accent-hover: #4f46e5;
+  /* Dark theme colors - Matching logo colors */
+  --background: #1A202C;
+  --foreground: #ffffff;
+  --card-background: #2D3748;
+  --card-border: #4A5568;
+  --accent: #20C997;
+  --accent-hover: #40D0E0;
   --text-secondary: #cbd5e1;
   --text-muted: #94a3b8;
-  --glass-bg: rgba(30, 27, 75, 0.8);
-  --glass-border: rgba(49, 46, 129, 0.3);
+  --glass-bg: rgba(45, 55, 72, 0.8);
+  --glass-border: rgba(74, 85, 104, 0.3);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    /* Dark theme colors - Modern Purple/Indigo */
-    --background: #0f0f23;
-    --foreground: #f8fafc;
-    --card-background: #1e1b4b;
-    --card-border: #312e81;
-    --accent: #6366f1;
-    --accent-hover: #4f46e5;
+    /* Dark theme colors - Matching logo colors */
+    --background: #1A202C;
+    --foreground: #ffffff;
+    --card-background: #2D3748;
+    --card-border: #4A5568;
+    --accent: #20C997;
+    --accent-hover: #40D0E0;
     --text-secondary: #cbd5e1;
     --text-muted: #94a3b8;
-    --glass-bg: rgba(30, 27, 75, 0.8);
-    --glass-border: rgba(49, 46, 129, 0.3);
+    --glass-bg: rgba(45, 55, 72, 0.8);
+    --glass-border: rgba(74, 85, 104, 0.3);
   }
 }
 
