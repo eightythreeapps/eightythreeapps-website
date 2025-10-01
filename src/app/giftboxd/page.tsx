@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Gift, Smartphone, Apple, Watch, DollarSign, Calendar, Users, Heart } from 'lucide-react';
+import { Gift, Apple, DollarSign, Calendar, Users, Heart } from 'lucide-react';
 
 export default function GiftBoxdPage() {
   const keyFeatures = [
@@ -66,7 +66,7 @@ export default function GiftBoxdPage() {
           </h2>
           <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
             GiftBoxd is less than a week old. Built by a dad with two boys whose birthdays 
-            collide with Christmas, drowning in "who's got what" lists and broken spreadsheets.
+            collide with Christmas, drowning in &quot;who&apos;s got what&quot; lists and broken spreadsheets.
           </p>
         </div>
 
@@ -78,7 +78,7 @@ export default function GiftBoxdPage() {
               </h3>
               <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                 My boys Zac and Noah have birthdays that fall right around Christmas. Every year, 
-                I'd find myself drowning in "who's got what" lists, broken spreadsheets, and the 
+                I&apos;d find myself drowning in &quot;who&apos;s got what&quot; lists, broken spreadsheets, and the 
                 constant fear of buying duplicate gifts or forgetting someone entirely.
               </p>
             </div>
@@ -90,9 +90,9 @@ export default function GiftBoxdPage() {
                 AI-Assisted Development
               </h3>
               <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                I'm not some startup founder with VC funding. I'm just a guy with an idea, 
+                I&apos;m not some startup founder with VC funding. I&apos;m just a guy with an idea, 
                 a full-time job as a Software Architect, and two young boys. The difference? 
-                We're living in the age of AI.
+                We&apos;re living in the age of AI.
               </p>
             </div>
           </div>
@@ -105,7 +105,7 @@ export default function GiftBoxdPage() {
               <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                 I hate subscriptions. No accounts, no data collection, no servers to maintain. 
                 Everything stays on your device. SwiftData handles local storage, and if you want 
-                cloud sync, that's handled by Apple's infrastructure, not mine.
+                cloud sync, that&apos;s handled by Apple&apos;s infrastructure, not mine.
               </p>
             </div>
           </div>
@@ -116,9 +116,9 @@ export default function GiftBoxdPage() {
                 Built in Spare Time
               </h3>
               <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                Built in the evenings between family life, kids' bedtime stories, and the general 
-                chaos of being a dad in Cornwall. The goal isn't to build the next unicorn startup. 
-                It's to solve a real problem I have.
+                Built in the evenings between family life, kids&apos; bedtime stories, and the general 
+                chaos of being a dad in Cornwall. The goal isn&apos;t to build the next unicorn startup. 
+                It&apos;s to solve a real problem I have.
               </p>
             </div>
           </div>

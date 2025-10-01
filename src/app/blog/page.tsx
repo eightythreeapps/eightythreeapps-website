@@ -57,7 +57,7 @@ export default function Blog() {
                       </div>
                       <div className="flex items-center space-x-1">
                         <Clock className="w-4 h-4" />
-                        <span>{posts[0].frontMatter.readTime || '5 min read'}</span>
+                          <span>{(posts[0].frontMatter.readTime as string) || '5 min read'}</span>
                       </div>
                     </div>
                   </div>
@@ -112,7 +112,7 @@ export default function Blog() {
                         </span>
                         <div className="flex items-center space-x-1 text-sm" style={{ color: 'var(--text-muted)' }}>
                           <Clock className="w-4 h-4" />
-                          <span>{post.frontMatter.readTime || '5 min read'}</span>
+                          <span>{(post.frontMatter.readTime as string) || '5 min read'}</span>
                         </div>
                       </div>
                       
@@ -126,7 +126,6 @@ export default function Blog() {
                       </div>
                     </div>
                     
-                    {/* Post Content */}
                     <div className="space-y-4">
                       <h3 className="text-xl font-bold group-hover:opacity-80 transition-opacity" 
                           style={{ color: 'var(--foreground)' }}>
@@ -138,7 +137,6 @@ export default function Blog() {
                       </p>
                     </div>
                     
-                    {/* Tags */}
                     {post.frontMatter.tags && (
                       <div className="flex flex-wrap gap-2">
                         {(post.frontMatter.tags as string[]).map((tag) => (
@@ -157,7 +155,6 @@ export default function Blog() {
                       </div>
                     )}
                     
-                    {/* Read More */}
                     <div className="flex items-center space-x-2 pt-4">
                       <span className="text-sm font-medium" style={{ color: 'var(--accent)' }}>
                         Read More

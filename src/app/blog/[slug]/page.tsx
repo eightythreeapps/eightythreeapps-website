@@ -71,8 +71,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               {post.excerpt}
             </p>
             
-            {/* Tags */}
-            {post.frontMatter.tags && (
+            {(post.frontMatter.tags as string[]) && (
               <div className="flex flex-wrap gap-2">
                 {(post.frontMatter.tags as string[]).map((tag) => (
                   <span 
