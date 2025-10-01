@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowRight, Smartphone, Globe, Music } from 'lucide-react';
+import { getAllPosts } from '@/lib/blog';
 
 export default function Home() {
   const featuredApps = [
@@ -26,20 +27,7 @@ export default function Home() {
     },
   ];
 
-  const recentPosts = [
-    {
-      title: "Building Kanora - A Modern Self-Hosted Music Server",
-      excerpt: "Why I decided to build my own music streaming solution when iTunes went downhill and Spotify got expensive.",
-      date: "2024-01-20",
-      readTime: "8 min read",
-    },
-    {
-      title: "The Technical Architecture Behind Kanora",
-      excerpt: "A deep dive into how I built a scalable music streaming server using modern web technologies.",
-      date: "2024-01-25",
-      readTime: "12 min read",
-    },
-  ];
+  const recentPosts = getAllPosts().slice(0, 2);
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -163,7 +151,7 @@ export default function Home() {
             {featuredApps.map((app) => (
               <Link 
                 key={app.name}
-                href={app.name === "Kanora" ? "/kanora" : "/apps"}
+                href={app.name === "Kanora" ? "/kanora" : app.name === "GiftBoxd" ? "/giftboxd" : "/apps"}
                 className="group glass-card rounded-2xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer block"
               >
                 <div className="space-y-4">
@@ -250,7 +238,7 @@ export default function Home() {
               {recentPosts.map((post, index) => (
                 <Link 
                   key={index}
-                  href="/blog"
+                  href={`/blog/${post.slug}`}
                   className="group glass-card rounded-xl p-6 hover:scale-105 transition-all duration-300 block"
                 >
                   <div className="flex items-center justify-between">
@@ -263,8 +251,8 @@ export default function Home() {
                         {post.excerpt}
                       </p>
                       <div className="flex items-center space-x-4 text-sm" style={{ color: 'var(--text-muted)' }}>
-                        <span>{post.date}</span>
-                        <span>{post.readTime}</span>
+                        <span>{new Date(post.date).toLocaleDateString()}</span>
+                        <span>{(post.frontMatter.readTime as string) || '5 min read'}</span>
                       </div>
                     </div>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform ml-4" 

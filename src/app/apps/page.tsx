@@ -45,7 +45,7 @@ export default function Apps() {
       icon: <Globe className="w-8 h-8" />,
       color: "from-teal-500 to-emerald-500",
       githubUrl: "#",
-      demoUrl: "https://giftboxd.app",
+      demoUrl: "/giftboxd",
       screenshots: ["/screenshots/giftboxd-1.png", "/screenshots/giftboxd-2.png"],
     },
   ];
@@ -84,7 +84,7 @@ export default function Apps() {
           {apps.map((app) => (
             <Link 
               key={app.id}
-              href={app.name === "Kanora" ? "/kanora" : "/apps"}
+              href={app.name === "Kanora" ? "/kanora" : app.name === "GiftBoxd" ? "/giftboxd" : "/apps"}
               className="group glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300 cursor-pointer block"
             >
               <div className="space-y-6">

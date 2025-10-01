@@ -1,66 +1,10 @@
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight, Tag } from "lucide-react";
+import { getAllPosts } from "@/lib/blog";
 
 export default function Blog() {
-  // This is a placeholder - in a real implementation, you'd fetch blog posts
-  const posts = [
-    {
-      slug: "building-scalable-react-applications",
-      title: "Building Scalable React Applications",
-      excerpt: "Learn the best practices for creating maintainable and performant React applications that can grow with your team and user base.",
-      date: "2024-01-15",
-      readTime: "5 min read",
-      category: "React",
-      tags: ["React", "Performance", "Architecture"],
-    },
-    {
-      slug: "future-of-mobile-development",
-      title: "The Future of Mobile Development",
-      excerpt: "Exploring the latest trends in mobile app development, cross-platform solutions, and what the future holds for mobile developers.",
-      date: "2024-01-10",
-      readTime: "7 min read",
-      category: "Mobile",
-      tags: ["React Native", "Flutter", "Cross-platform"],
-    },
-    {
-      slug: "design-systems-that-scale",
-      title: "Design Systems That Scale",
-      excerpt: "Creating consistent and scalable design systems for modern applications. Learn how to build maintainable UI component libraries.",
-      date: "2024-01-05",
-      readTime: "6 min read",
-      category: "Design",
-      tags: ["Design Systems", "UI/UX", "Components"],
-    },
-    {
-      slug: "ai-integration-in-web-apps",
-      title: "AI Integration in Web Applications",
-      excerpt: "How to effectively integrate AI capabilities into web applications while maintaining performance and user experience.",
-      date: "2024-01-01",
-      readTime: "8 min read",
-      category: "AI",
-      tags: ["AI", "Machine Learning", "Web Development"],
-    },
-    {
-      slug: "typescript-best-practices",
-      title: "TypeScript Best Practices for Large Projects",
-      excerpt: "Essential TypeScript patterns and practices that help maintain code quality and developer productivity in large-scale projects.",
-      date: "2023-12-28",
-      readTime: "6 min read",
-      category: "TypeScript",
-      tags: ["TypeScript", "Best Practices", "Large Projects"],
-    },
-    {
-      slug: "nextjs-performance-optimization",
-      title: "Next.js Performance Optimization Techniques",
-      excerpt: "Advanced techniques for optimizing Next.js applications, including SSR, SSG, and modern performance patterns.",
-      date: "2023-12-25",
-      readTime: "9 min read",
-      category: "Next.js",
-      tags: ["Next.js", "Performance", "Optimization"],
-    },
-  ];
-
-  const categories = ["All", "React", "Mobile", "Design", "AI", "TypeScript", "Next.js"];
+  const posts = getAllPosts();
+  const categories = ["All", "Development", "Architecture", "Music", "AI"];
 
   return (
     <div className="min-h-screen py-20">
@@ -104,7 +48,7 @@ export default function Blog() {
                   <div className="flex items-center space-x-4">
                     <span className="px-3 py-1 rounded-full text-sm font-medium glass"
                           style={{ color: 'var(--accent)' }}>
-                      {posts[0].category}
+                      Development
                     </span>
                     <div className="flex items-center space-x-4 text-sm" style={{ color: 'var(--text-muted)' }}>
                       <div className="flex items-center space-x-1">
@@ -113,7 +57,7 @@ export default function Blog() {
                       </div>
                       <div className="flex items-center space-x-1">
                         <Clock className="w-4 h-4" />
-                        <span>{posts[0].readTime}</span>
+                        <span>{posts[0].frontMatter.readTime || '5 min read'}</span>
                       </div>
                     </div>
                   </div>
@@ -150,78 +94,88 @@ export default function Blog() {
             All Posts
           </h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
-              <Link 
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="group glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300"
-              >
-                <div className="space-y-6">
-                  {/* Post Meta */}
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="px-3 py-1 rounded-full text-sm font-medium glass"
-                            style={{ color: 'var(--accent)' }}>
-                        {post.category}
-                      </span>
+          {posts.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {posts.map((post) => (
+                <Link 
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300"
+                >
+                  <div className="space-y-6">
+                    {/* Post Meta */}
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="px-3 py-1 rounded-full text-sm font-medium glass"
+                              style={{ color: 'var(--accent)' }}>
+                          Development
+                        </span>
+                        <div className="flex items-center space-x-1 text-sm" style={{ color: 'var(--text-muted)' }}>
+                          <Clock className="w-4 h-4" />
+                          <span>{post.frontMatter.readTime || '5 min read'}</span>
+                        </div>
+                      </div>
+                      
                       <div className="flex items-center space-x-1 text-sm" style={{ color: 'var(--text-muted)' }}>
-                        <Clock className="w-4 h-4" />
-                        <span>{post.readTime}</span>
+                        <Calendar className="w-4 h-4" />
+                        <span>{new Date(post.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
+                        })}</span>
                       </div>
                     </div>
                     
-                    <div className="flex items-center space-x-1 text-sm" style={{ color: 'var(--text-muted)' }}>
-                      <Calendar className="w-4 h-4" />
-                      <span>{new Date(post.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })}</span>
+                    {/* Post Content */}
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-bold group-hover:opacity-80 transition-opacity" 
+                          style={{ color: 'var(--foreground)' }}>
+                        {post.title}
+                      </h3>
+                      
+                      <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                        {post.excerpt}
+                      </p>
+                    </div>
+                    
+                    {/* Tags */}
+                    {post.frontMatter.tags && (
+                      <div className="flex flex-wrap gap-2">
+                        {(post.frontMatter.tags as string[]).map((tag) => (
+                          <span 
+                            key={tag}
+                            className="flex items-center space-x-1 px-2 py-1 rounded-lg text-sm"
+                            style={{ 
+                              backgroundColor: 'var(--glass-bg)', 
+                              color: 'var(--text-secondary)' 
+                            }}
+                          >
+                            <Tag className="w-3 h-3" />
+                            <span>{tag}</span>
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    
+                    {/* Read More */}
+                    <div className="flex items-center space-x-2 pt-4">
+                      <span className="text-sm font-medium" style={{ color: 'var(--accent)' }}>
+                        Read More
+                      </span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" 
+                                  style={{ color: 'var(--accent)' }} />
                     </div>
                   </div>
-                  
-                  {/* Post Content */}
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-bold group-hover:opacity-80 transition-opacity" 
-                        style={{ color: 'var(--foreground)' }}>
-                      {post.title}
-                    </h3>
-                    
-                    <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                      {post.excerpt}
-                    </p>
-                  </div>
-                  
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {post.tags.map((tag) => (
-                      <span 
-                        key={tag}
-                        className="flex items-center space-x-1 px-2 py-1 rounded-lg text-sm"
-                        style={{ 
-                          backgroundColor: 'var(--glass-bg)', 
-                          color: 'var(--text-secondary)' 
-                        }}
-                      >
-                        <Tag className="w-3 h-3" />
-                        <span>{tag}</span>
-                      </span>
-                    ))}
-                  </div>
-                  
-                  {/* Read More */}
-                  <div className="flex items-center space-x-2 pt-4">
-                    <span className="text-sm font-medium" style={{ color: 'var(--accent)' }}>
-                      Read More
-                    </span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" 
-                                style={{ color: 'var(--accent)' }} />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-xl" style={{ color: 'var(--text-secondary)' }}>
+                No blog posts yet. Check back soon!
+              </p>
+            </div>
+          )}
         </div>
 
       </div>
