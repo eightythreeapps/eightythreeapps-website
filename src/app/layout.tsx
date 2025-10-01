@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import ThemeToggle from "@/components/ThemeToggle";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,9 +41,10 @@ export default function RootLayout({
         <div className="fixed top-20 right-4 z-40">
           <ThemeToggle />
         </div>
-        <main className="pt-16">
+        <main className="pt-16 min-h-screen">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );
