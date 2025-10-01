@@ -148,130 +148,78 @@ export default function Home() {
       {/* Featured Apps Section */}
       <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Left Column - Content */}
-            <div className="space-y-8">
-              <div className="space-y-6">
-                <div className="inline-flex items-center px-4 py-2 rounded-full glass-card text-sm font-medium" style={{ color: 'var(--accent)' }}>
-                  <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
-                  Current Projects
-                </div>
-                
-                <h2 className="text-4xl md:text-5xl font-bold" style={{ color: 'var(--foreground)' }}>
-                  What I&apos;m Working On
-                </h2>
-                
-                <p className="text-xl leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                  Here&apos;s what I&apos;ve been tinkering with lately. 
-                  Some are actually useful, others... well, they seemed like a good idea at the time.
-                </p>
-              </div>
-
-              {/* Featured App Cards */}
-              <div className="space-y-6">
-                {featuredApps.map((app) => (
-                  <div 
-                    key={app.name}
-                    className="group glass-card rounded-2xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer"
-                  >
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" 
-                           style={{ backgroundColor: 'var(--accent)', color: 'white' }}>
-                        {app.icon}
-                      </div>
-                      
-                      <div className="flex-1 space-y-3">
-                        <div className="flex items-center justify-between">
-                          <h3 className="text-xl font-bold" style={{ color: 'var(--foreground)' }}>
-                            {app.name}
-                          </h3>
-                          <span className="px-3 py-1 rounded-full text-sm font-medium glass"
-                                style={{ color: 'var(--accent)' }}>
-                            {app.status}
-                          </span>
-                        </div>
-                        
-                        <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                          {app.description}
-                        </p>
-                        
-                        <div className="flex flex-wrap gap-2">
-                          {app.tech.map((tech) => (
-                            <span 
-                              key={tech}
-                              className="px-3 py-1 rounded-lg text-sm font-medium"
-                              style={{ 
-                                backgroundColor: 'var(--glass-bg)', 
-                                color: 'var(--text-secondary)' 
-                              }}
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="pt-4">
-                <Link 
-                  href="/apps"
-                  className="inline-flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold glass-card hover:scale-105 transition-all duration-300"
-                  style={{ color: 'var(--foreground)' }}
-                >
-                  <span>View All Apps</span>
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </div>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 rounded-full glass-card text-sm font-medium mb-6" style={{ color: 'var(--accent)' }}>
+              <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
+              Current Projects
             </div>
+            
+            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
+              What I&apos;m Working On
+            </h2>
+            
+            <p className="text-xl max-w-2xl mx-auto mb-12" style={{ color: 'var(--text-secondary)' }}>
+              Here&apos;s what I&apos;ve been tinkering with lately. 
+              Some are actually useful, others... well, they seemed like a good idea at the time.
+            </p>
+          </div>
 
-            {/* Right Column - Visual Elements */}
-            <div className="relative">
-              <div className="sticky top-20 space-y-8">
-                {/* Floating Code Block */}
-                <div className="glass-card p-6 rounded-2xl hover:scale-105 transition-transform duration-500">
+          {/* Apps Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {featuredApps.map((app) => (
+              <div 
+                key={app.name}
+                className="group glass-card rounded-2xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center" 
+                         style={{ backgroundColor: 'var(--accent)', color: 'white' }}>
+                      {app.icon}
+                    </div>
+                    <span className="px-3 py-1 rounded-full text-sm font-medium glass"
+                          style={{ color: 'var(--accent)' }}>
+                      {app.status}
+                    </span>
+                  </div>
+
                   <div className="space-y-3">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    </div>
-                    <div className="space-y-2 font-mono text-sm">
-                      <div className="text-indigo-400">const developer = {'{'}</div>
-                      <div className="text-blue-400 ml-4">name: &quot;Ben Reed&quot;,</div>
-                      <div className="text-blue-400 ml-4">passion: &quot;Building stuff&quot;,</div>
-                      <div className="text-blue-400 ml-4">coffee: &quot;∞&quot;,</div>
-                      <div className="text-indigo-400">{'}'};</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating Stats */}
-                <div className="glass-card p-6 rounded-2xl hover:scale-105 transition-transform duration-500">
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-bold" style={{ color: 'var(--foreground)' }}>
-                      Quick Stats
+                    <h3 className="text-xl font-bold" style={{ color: 'var(--foreground)' }}>
+                      {app.name}
                     </h3>
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-center">
-                        <span style={{ color: 'var(--text-secondary)' }}>Lines of Code</span>
-                        <span className="font-bold" style={{ color: 'var(--accent)' }}>42,069</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span style={{ color: 'var(--text-secondary)' }}>Cups of Coffee</span>
-                        <span className="font-bold" style={{ color: 'var(--accent)' }}>∞</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span style={{ color: 'var(--text-secondary)' }}>Bugs Fixed</span>
-                        <span className="font-bold" style={{ color: 'var(--accent)' }}>Most</span>
-                      </div>
-                    </div>
+                    <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                      {app.description}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {app.tech.map((tech) => (
+                      <span 
+                        key={tech}
+                        className="px-3 py-1 rounded-lg text-sm font-medium"
+                        style={{ 
+                          backgroundColor: 'var(--glass-bg)', 
+                          color: 'var(--text-secondary)' 
+                        }}
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
-            </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link 
+              href="/apps"
+              className="inline-flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold glass-card hover:scale-105 transition-all duration-300"
+              style={{ color: 'var(--foreground)' }}
+            >
+              <span>View All Apps</span>
+              <ArrowRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
