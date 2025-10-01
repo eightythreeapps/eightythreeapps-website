@@ -1,4 +1,5 @@
-import { Github, ExternalLink, Smartphone, Globe, Music } from 'lucide-react';
+import Link from 'next/link';
+import { Smartphone, Globe, Music } from 'lucide-react';
 
 export default function Apps() {
   const apps = [
@@ -81,9 +82,10 @@ export default function Apps() {
         {/* Apps Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {apps.map((app) => (
-            <div 
+            <Link 
               key={app.id}
-              className="group glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300 cursor-pointer"
+              href={app.name === "Kanora" ? "/kanora" : "/apps"}
+              className="group glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300 cursor-pointer block"
             >
               <div className="space-y-6">
                 {/* App Header */}
@@ -159,21 +161,8 @@ export default function Apps() {
                   </div>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex items-center space-x-4 pt-4">
-                  <button className="flex items-center space-x-2 text-sm font-medium hover:opacity-80 transition-opacity"
-                          style={{ color: 'var(--accent)' }}>
-                    <Github className="w-4 h-4" />
-                    <span>Code</span>
-                  </button>
-                  <button className="flex items-center space-x-2 text-sm font-medium hover:opacity-80 transition-opacity"
-                          style={{ color: 'var(--accent)' }}>
-                    <ExternalLink className="w-4 h-4" />
-                    <span>Demo</span>
-                  </button>
-                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
