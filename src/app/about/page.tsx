@@ -42,7 +42,7 @@ export default function About() {
                   Hi, I&apos;m Ben Reed
                 </h1>
                 
-                <p className="text-2xl font-semibold bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent">
+                <p className="text-2xl font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
                   Full-Stack Developer & App Creator
                 </p>
                 

@@ -51,9 +51,9 @@ export default function Home() {
     <div className="min-h-screen relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-orange-200 to-amber-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-r from-amber-200 to-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-r from-orange-200 to-red-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-indigo-200 to-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-r from-purple-200 to-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-r from-indigo-200 to-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{ animationDelay: '4s' }}></div>
       </div>
 
       {/* Hero Section */}
@@ -64,7 +64,7 @@ export default function Home() {
             <div className="space-y-8">
               <div className="space-y-6">
                 <div className="inline-flex items-center px-4 py-2 rounded-full glass-card text-sm font-medium" style={{ color: 'var(--accent)' }}>
-                  <span className="w-2 h-2 bg-orange-500 rounded-full mr-2 animate-pulse"></span>
+                  <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2 animate-pulse"></span>
                   Available for projects
                 </div>
                 
@@ -72,9 +72,9 @@ export default function Home() {
                   <span className="block" style={{ color: 'var(--foreground)' }}>
                     Hi, I&apos;m Ben
                   </span>
-                  <span className="block bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent">
-                    I make stuff
-                  </span>
+                <span className="block bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
+                  I make stuff
+                </span>
                 </h1>
                 
                 <p className="text-xl md:text-2xl leading-relaxed max-w-2xl" 
@@ -123,7 +123,7 @@ export default function Home() {
 
             {/* Right Column - Visual Element */}
             <div className="relative">
-              <div className="glass-card p-8 rounded-3xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+              <div className="glass-card p-8 rounded-3xl hover:scale-105 transition-transform duration-500">
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <div className="w-3 h-3 bg-red-500 rounded-full"></div>
@@ -131,18 +131,18 @@ export default function Home() {
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                   </div>
                   <div className="space-y-2">
-                    <div className="h-4 bg-gradient-to-r from-orange-200 to-amber-200 rounded w-3/4"></div>
-                    <div className="h-4 bg-gradient-to-r from-amber-200 to-yellow-200 rounded w-1/2"></div>
-                    <div className="h-4 bg-gradient-to-r from-orange-200 to-red-200 rounded w-5/6"></div>
+                    <div className="h-4 bg-gradient-to-r from-indigo-200 to-purple-200 rounded w-3/4"></div>
+                    <div className="h-4 bg-gradient-to-r from-purple-200 to-pink-200 rounded w-1/2"></div>
+                    <div className="h-4 bg-gradient-to-r from-indigo-200 to-blue-200 rounded w-5/6"></div>
                   </div>
                 </div>
               </div>
               
               {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-orange-400 to-amber-500 rounded-full flex items-center justify-center text-white font-bold text-xl transform rotate-12 hover:rotate-0 transition-transform duration-300">
+              <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl hover:scale-110 transition-transform duration-300">
                 🚀
               </div>
-              <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-amber-400 to-yellow-500 rounded-full flex items-center justify-center text-white font-bold transform -rotate-12 hover:rotate-0 transition-transform duration-300">
+              <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold hover:scale-110 transition-transform duration-300">
                 ⚡
               </div>
             </div>
@@ -174,12 +174,10 @@ export default function Home() {
 
               {/* Featured App Cards */}
               <div className="space-y-6">
-                {featuredApps.map((app, index) => (
+                {featuredApps.map((app) => (
                   <div 
                     key={app.name}
-                    className={`group glass-card rounded-2xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer ${
-                      index % 2 === 0 ? 'transform -rotate-1 hover:rotate-0' : 'transform rotate-1 hover:rotate-0'
-                    }`}
+                    className="group glass-card rounded-2xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer"
                   >
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" 
@@ -238,7 +236,7 @@ export default function Home() {
             <div className="relative">
               <div className="sticky top-20 space-y-8">
                 {/* Floating Code Block */}
-                <div className="glass-card p-6 rounded-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                <div className="glass-card p-6 rounded-2xl hover:scale-105 transition-transform duration-500">
                   <div className="space-y-3">
                     <div className="flex items-center space-x-2">
                       <div className="w-3 h-3 bg-red-500 rounded-full"></div>
@@ -246,17 +244,17 @@ export default function Home() {
                       <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                     </div>
                     <div className="space-y-2 font-mono text-sm">
-                      <div className="text-orange-400">const developer = {'{'}</div>
+                      <div className="text-indigo-400">const developer = {'{'}</div>
                       <div className="text-blue-400 ml-4">name: &quot;Ben Reed&quot;,</div>
                       <div className="text-blue-400 ml-4">passion: &quot;Building stuff&quot;,</div>
                       <div className="text-blue-400 ml-4">coffee: &quot;∞&quot;,</div>
-                      <div className="text-orange-400">{'}'};</div>
+                      <div className="text-indigo-400">{'}'};</div>
                     </div>
                   </div>
                 </div>
 
                 {/* Floating Stats */}
-                <div className="glass-card p-6 rounded-2xl transform -rotate-1 hover:rotate-0 transition-transform duration-500">
+                <div className="glass-card p-6 rounded-2xl hover:scale-105 transition-transform duration-500">
                   <div className="space-y-4">
                     <h3 className="text-lg font-bold" style={{ color: 'var(--foreground)' }}>
                       Quick Stats
@@ -287,15 +285,15 @@ export default function Home() {
       <section className="py-20 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-10 right-10 w-32 h-32 border-2 border-orange-300 rounded-full"></div>
-          <div className="absolute bottom-20 left-20 w-24 h-24 border-2 border-amber-300 rounded-full"></div>
-          <div className="absolute top-1/2 left-1/4 w-16 h-16 border-2 border-yellow-300 rounded-full"></div>
+          <div className="absolute top-10 right-10 w-32 h-32 border-2 border-indigo-300 rounded-full"></div>
+          <div className="absolute bottom-20 left-20 w-24 h-24 border-2 border-purple-300 rounded-full"></div>
+          <div className="absolute top-1/2 left-1/4 w-16 h-16 border-2 border-pink-300 rounded-full"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-4 py-2 rounded-full glass-card text-sm font-medium mb-6" style={{ color: 'var(--accent)' }}>
-              <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+              <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
               Latest Thoughts
             </div>
             
@@ -349,9 +347,7 @@ export default function Home() {
                 <Link 
                   key={index}
                   href="/blog"
-                  className={`group glass-card rounded-2xl p-6 hover:scale-105 transition-all duration-300 block ${
-                    index % 2 === 0 ? 'transform rotate-1 hover:rotate-0' : 'transform -rotate-1 hover:rotate-0'
-                  }`}
+                  className="group glass-card rounded-2xl p-6 hover:scale-105 transition-all duration-300 block"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between text-sm" 
