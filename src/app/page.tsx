@@ -61,8 +61,8 @@ export default function Home() {
                 <span className="block" style={{ color: 'var(--foreground)' }}>
                   Hi, I&apos;m Ben
                 </span>
-                <span className="block bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                  I Build Apps
+                <span className="block bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent">
+                  I make stuff
                 </span>
               </h1>
               

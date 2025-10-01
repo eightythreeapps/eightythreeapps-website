@@ -1,46 +1,46 @@
 @import "tailwindcss";
 
 :root {
-  /* Light theme colors */
+  /* Light theme colors - Radiant inspired */
   --background: #ffffff;
   --foreground: #1a1a1a;
-  --card-background: #f7fafc;
-  --card-border: #e2e8f0;
-  --accent: #00bcd4;
-  --accent-hover: #00acc1;
-  --text-secondary: #64748b;
-  --text-muted: #94a3b8;
-  --glass-bg: rgba(247, 250, 252, 0.8);
-  --glass-border: rgba(226, 232, 240, 0.3);
+  --card-background: #fef7ed;
+  --card-border: #fed7aa;
+  --accent: #f97316;
+  --accent-hover: #ea580c;
+  --text-secondary: #78716c;
+  --text-muted: #a8a29e;
+  --glass-bg: rgba(254, 247, 237, 0.8);
+  --glass-border: rgba(254, 215, 170, 0.3);
 }
 
 [data-theme="dark"] {
-  /* Dark theme colors */
-  --background: #0f1419;
-  --foreground: #ffffff;
-  --card-background: #1e293b;
-  --card-border: #334155;
-  --accent: #00bcd4;
-  --accent-hover: #00acc1;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-  --glass-bg: rgba(30, 41, 59, 0.8);
-  --glass-border: rgba(51, 65, 85, 0.3);
+  /* Dark theme colors - Radiant inspired */
+  --background: #0c0a09;
+  --foreground: #fafaf9;
+  --card-background: #1c1917;
+  --card-border: #44403c;
+  --accent: #f97316;
+  --accent-hover: #ea580c;
+  --text-secondary: #d6d3d1;
+  --text-muted: #a8a29e;
+  --glass-bg: rgba(28, 25, 23, 0.8);
+  --glass-border: rgba(68, 64, 60, 0.3);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    /* Dark theme colors */
-    --background: #0f1419;
-    --foreground: #ffffff;
-    --card-background: #1e293b;
-    --card-border: #334155;
-    --accent: #00bcd4;
-    --accent-hover: #00acc1;
-    --text-secondary: #cbd5e1;
-    --text-muted: #94a3b8;
-    --glass-bg: rgba(30, 41, 59, 0.8);
-    --glass-border: rgba(51, 65, 85, 0.3);
+    /* Dark theme colors - Radiant inspired */
+    --background: #0c0a09;
+    --foreground: #fafaf9;
+    --card-background: #1c1917;
+    --card-border: #44403c;
+    --accent: #f97316;
+    --accent-hover: #ea580c;
+    --text-secondary: #d6d3d1;
+    --text-muted: #a8a29e;
+    --glass-bg: rgba(28, 25, 23, 0.8);
+    --glass-border: rgba(68, 64, 60, 0.3);
   }
 }
 
