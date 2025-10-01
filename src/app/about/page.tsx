@@ -15,8 +15,8 @@ export default function About() {
       icon: <Award className="w-6 h-6" />,
     },
     {
-      title: "20+ Projects Completed",
-      description: "From startups to enterprise solutions",
+      title: "3 Apps in Development",
+      description: "Santabot, Kanora, and GiftBoxd",
       icon: <Users className="w-6 h-6" />,
     },
     {
@@ -47,8 +47,8 @@ export default function About() {
                 </p>
                 
                 <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                  I specialize in creating innovative web and mobile applications that solve real-world problems. 
-                  With a passion for clean code, beautiful design, and cutting-edge technology, I bring ideas to life.
+                  I build web and mobile apps that solve real problems. 
+                  I focus on clean code, good design, and creating things that people actually want to use.
                 </p>
               </div>
 
@@ -164,21 +164,19 @@ export default function About() {
               
               <div className="prose prose-lg max-w-none" style={{ color: 'var(--text-secondary)' }}>
                 <p className="text-xl leading-relaxed mb-6">
-                  My journey in software development began over 5 years ago when I discovered my passion for 
-                  creating digital solutions that make a real difference. What started as curiosity about how 
-                  websites work has evolved into a deep expertise in full-stack development.
+                  I&apos;ve been building apps for about 5 years now. Started with web development, 
+                  then got into mobile apps, and now I work on both. I like solving problems and 
+                  creating things that make life a bit easier.
                 </p>
                 
                 <p className="text-xl leading-relaxed mb-6">
-                  I specialize in modern web technologies like React, Next.js, and Node.js, but I&apos;m always 
-                  exploring new frameworks and tools. My approach combines technical excellence with user-centered 
-                  design, ensuring that every application I build is both powerful and intuitive.
+                  I work with React, Next.js, React Native, and iOS development. I prefer 
+                  keeping things simple and focused on what actually matters to users.
                 </p>
                 
                 <p className="text-xl leading-relaxed">
-                  When I&apos;m not coding, you&apos;ll find me writing about development best practices, 
-                  contributing to open source projects, or exploring the latest trends in mobile app development. 
-                  I believe in continuous learning and sharing knowledge with the developer community.
+                  When I&apos;m not coding, I write about development, contribute to open source projects, 
+                  and try to stay up with what&apos;s new in the field. Always learning something new.
                 </p>
               </div>
             </div>

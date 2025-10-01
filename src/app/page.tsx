@@ -4,24 +4,24 @@ import { ArrowRight, Github, ExternalLink, Code, Smartphone, Globe } from 'lucid
 export default function Home() {
   const featuredApps = [
     {
-      name: "TaskFlow Pro",
-      description: "A productivity app for managing tasks and workflows with AI-powered insights.",
+      name: "Santabot",
+      description: "An AI-powered messaging app for kids and parents to message Santa at Christmas.",
       status: "In Development",
-      tech: ["React Native", "Node.js", "AI/ML"],
+      tech: ["React Native", "AI", "Node.js"],
       icon: <Smartphone className="w-6 h-6" />,
     },
     {
-      name: "DataViz Studio",
-      description: "Interactive data visualization tool for creating stunning charts and dashboards.",
-      status: "Beta",
-      tech: ["React", "D3.js", "TypeScript"],
+      name: "Kanora",
+      description: "A music server and player application like Plex. Think iTunes when it was good.",
+      status: "In Development",
+      tech: ["React", "Node.js", "Audio Processing"],
       icon: <Code className="w-6 h-6" />,
     },
     {
-      name: "CloudSync Manager",
-      description: "Enterprise-grade cloud storage management with advanced security features.",
-      status: "Planning",
-      tech: ["Next.js", "AWS", "PostgreSQL"],
+      name: "GiftBoxd",
+      description: "Keep track of gifts, ideas, and spending. Works on iPhone, iPad, and Apple Watch.",
+      status: "Beta",
+      tech: ["iOS", "Swift", "Core Data"],
       icon: <Globe className="w-6 h-6" />,
     },
   ];
@@ -59,17 +59,17 @@ export default function Home() {
             <div className="space-y-4">
               <h1 className="text-6xl md:text-7xl font-bold tracking-tight">
                 <span className="block" style={{ color: 'var(--foreground)' }}>
-                  Building the
+                  Building Apps
                 </span>
                 <span className="block bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                  Future of Apps
+                  That Matter
                 </span>
               </h1>
               
               <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed" 
                  style={{ color: 'var(--text-secondary)' }}>
-                I create innovative web and mobile applications that solve real-world problems. 
-                From concept to deployment, I bring ideas to life with modern technology and elegant design.
+                I build web and mobile apps that solve real problems. 
+                From iOS apps to web services, I focus on creating useful tools that people actually want to use.
               </p>
             </div>
 
@@ -103,8 +103,7 @@ export default function Home() {
               Featured Apps
             </h2>
             <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-              A collection of innovative applications I&apos;m currently developing, 
-              each solving unique challenges with modern technology.
+              A few apps I&apos;m working on. Some are in beta, others are still in development.
             </p>
           </div>
 
@@ -245,12 +244,11 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="glass rounded-3xl p-12 space-y-8">
             <h2 className="text-4xl md:text-5xl font-bold" style={{ color: 'var(--foreground)' }}>
-              Let&apos;s Build Something Amazing
+              Let&apos;s Work Together
             </h2>
             
             <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-              Have an idea for an app? Looking for a development partner? 
-              I&apos;d love to hear about your project and explore how we can bring it to life.
+              Have a project in mind? I&apos;d like to hear about it and see if we can make it happen.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

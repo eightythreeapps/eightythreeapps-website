@@ -1,100 +1,55 @@
-import { Github, ExternalLink, Smartphone, Globe, Code, Database, Zap, Shield } from 'lucide-react';
+import { Github, ExternalLink, Smartphone, Globe, Code } from 'lucide-react';
 
 export default function Apps() {
   const apps = [
     {
       id: 1,
-      name: "TaskFlow Pro",
-      description: "A comprehensive productivity app that combines task management with AI-powered insights to help teams and individuals work more efficiently.",
-      longDescription: "TaskFlow Pro revolutionizes productivity by integrating advanced task management with AI-driven analytics. Features include smart scheduling, team collaboration, progress tracking, and predictive insights to optimize workflow efficiency.",
+      name: "Santabot",
+      description: "An AI-powered messaging app for kids and parents to message Santa at Christmas.",
+      longDescription: "Santabot lets kids send messages to Santa and get AI-powered responses. Parents can monitor conversations and customize the experience. It's designed to bring back the magic of Christmas while keeping parents involved.",
       status: "In Development",
-      category: "Productivity",
-      tech: ["React Native", "Node.js", "PostgreSQL", "OpenAI API", "Redis"],
-      features: ["AI Task Suggestions", "Team Collaboration", "Progress Analytics", "Smart Scheduling"],
+      category: "Mobile",
+      tech: ["React Native", "AI", "Node.js", "Firebase"],
+      features: ["AI Santa Messages", "Parent Controls", "Custom Responses", "Christmas Magic"],
       icon: <Smartphone className="w-8 h-8" />,
-      color: "from-blue-500 to-cyan-500",
+      color: "from-red-500 to-green-500",
       githubUrl: "#",
       demoUrl: "#",
-      screenshots: ["/screenshots/taskflow-1.png", "/screenshots/taskflow-2.png"],
+      screenshots: ["/screenshots/santabot-1.png", "/screenshots/santabot-2.png"],
     },
     {
       id: 2,
-      name: "DataViz Studio",
-      description: "Interactive data visualization platform that transforms complex datasets into beautiful, interactive charts and dashboards.",
-      longDescription: "DataViz Studio empowers users to create stunning data visualizations without coding. With drag-and-drop functionality, real-time collaboration, and extensive chart types, it's perfect for analysts, marketers, and business professionals.",
-      status: "Beta",
-      category: "Analytics",
-      tech: ["React", "D3.js", "TypeScript", "WebSocket", "MongoDB"],
-      features: ["Drag & Drop Builder", "Real-time Collaboration", "50+ Chart Types", "Export Options"],
+      name: "Kanora",
+      description: "A music server and player application like Plex. Think iTunes when it was good.",
+      longDescription: "Kanora is a self-hosted music server that lets you organize and stream your music collection. It has a clean interface, supports multiple formats, and works across devices. No subscriptions, no ads, just your music.",
+      status: "In Development",
+      category: "Desktop",
+      tech: ["React", "Node.js", "Electron", "Audio Processing"],
+      features: ["Music Library", "Multi-format Support", "Cross-device Sync", "Clean Interface"],
       icon: <Code className="w-8 h-8" />,
       color: "from-purple-500 to-pink-500",
       githubUrl: "#",
       demoUrl: "#",
-      screenshots: ["/screenshots/dataviz-1.png", "/screenshots/dataviz-2.png"],
+      screenshots: ["/screenshots/kanora-1.png", "/screenshots/kanora-2.png"],
     },
     {
       id: 3,
-      name: "CloudSync Manager",
-      description: "Enterprise-grade cloud storage management solution with advanced security, monitoring, and automation features.",
-      longDescription: "CloudSync Manager provides comprehensive cloud storage management for enterprises. Features include automated backups, security monitoring, cost optimization, and compliance reporting across multiple cloud providers.",
-      status: "Planning",
-      category: "Enterprise",
-      tech: ["Next.js", "AWS", "PostgreSQL", "Docker", "Kubernetes"],
-      features: ["Multi-Cloud Support", "Automated Backups", "Security Monitoring", "Cost Optimization"],
+      name: "GiftBoxd",
+      description: "Keep track of gifts, ideas, and spending. Works on iPhone, iPad, and Apple Watch.",
+      longDescription: "GiftBoxd helps you never forget a gift again. Track gifts you've bought, save ideas for later, and see where your money goes. Simple, honest, and yours forever. No ads, no data grabs, no nonsense.",
+      status: "Beta",
+      category: "iOS",
+      tech: ["iOS", "Swift", "Core Data", "Apple Watch"],
+      features: ["Gift Tracking", "Idea Storage", "Spending Analytics", "Apple Watch Support"],
       icon: <Globe className="w-8 h-8" />,
-      color: "from-green-500 to-emerald-500",
+      color: "from-blue-500 to-cyan-500",
       githubUrl: "#",
-      demoUrl: "#",
-      screenshots: ["/screenshots/cloudsync-1.png", "/screenshots/cloudsync-2.png"],
-    },
-    {
-      id: 4,
-      name: "HealthTracker",
-      description: "Personal health and fitness tracking app with AI-powered insights and personalized recommendations.",
-      longDescription: "HealthTracker combines fitness tracking with health monitoring to provide personalized insights. Features include activity tracking, nutrition logging, health metrics, and AI-powered recommendations for optimal wellness.",
-      status: "In Development",
-      category: "Health",
-      tech: ["React Native", "Firebase", "TensorFlow", "HealthKit", "Google Fit"],
-      features: ["Activity Tracking", "Nutrition Logging", "Health Metrics", "AI Recommendations"],
-      icon: <Zap className="w-8 h-8" />,
-      color: "from-orange-500 to-red-500",
-      githubUrl: "#",
-      demoUrl: "#",
-      screenshots: ["/screenshots/healthtracker-1.png", "/screenshots/healthtracker-2.png"],
-    },
-    {
-      id: 5,
-      name: "SecureChat",
-      description: "End-to-end encrypted messaging platform with advanced security features and privacy protection.",
-      longDescription: "SecureChat provides military-grade encryption for private communications. Features include disappearing messages, secure file sharing, group chats, and advanced privacy controls for maximum security.",
-      status: "In Development",
-      category: "Security",
-      tech: ["React Native", "Node.js", "Signal Protocol", "WebRTC", "PostgreSQL"],
-      features: ["End-to-End Encryption", "Disappearing Messages", "Secure File Sharing", "Group Chats"],
-      icon: <Shield className="w-8 h-8" />,
-      color: "from-indigo-500 to-blue-500",
-      githubUrl: "#",
-      demoUrl: "#",
-      screenshots: ["/screenshots/securechat-1.png", "/screenshots/securechat-2.png"],
-    },
-    {
-      id: 6,
-      name: "EcoTracker",
-      description: "Environmental impact tracking app that helps users monitor and reduce their carbon footprint.",
-      longDescription: "EcoTracker empowers users to make environmentally conscious decisions by tracking their carbon footprint across various activities. Features include impact calculations, sustainability tips, and community challenges.",
-      status: "Planning",
-      category: "Sustainability",
-      tech: ["React", "Node.js", "MongoDB", "Carbon API", "Maps API"],
-      features: ["Carbon Footprint Tracking", "Sustainability Tips", "Community Challenges", "Impact Reports"],
-      icon: <Database className="w-8 h-8" />,
-      color: "from-teal-500 to-green-500",
-      githubUrl: "#",
-      demoUrl: "#",
-      screenshots: ["/screenshots/ecotracker-1.png", "/screenshots/ecotracker-2.png"],
+      demoUrl: "https://giftboxd.app",
+      screenshots: ["/screenshots/giftboxd-1.png", "/screenshots/giftboxd-2.png"],
     },
   ];
 
-  const categories = ["All", "Productivity", "Analytics", "Enterprise", "Health", "Security", "Sustainability"];
+  const categories = ["All", "Mobile", "Desktop", "iOS"];
 
   return (
     <div className="min-h-screen py-20">
@@ -105,8 +60,8 @@ export default function Apps() {
             My Apps Portfolio
           </h1>
           <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            A collection of innovative applications I&apos;m developing, each designed to solve real-world problems 
-            with modern technology and elegant user experiences.
+            A few apps I&apos;m working on. Some are in beta, others are still in development. 
+            Each one solves a problem I&apos;ve encountered or something I wish existed.
           </p>
         </div>
 
