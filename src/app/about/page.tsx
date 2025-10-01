@@ -1,98 +1,246 @@
-import ThemeAwareAppIcon from "@/components/ThemeAwareAppIcon";
+import { Code, Smartphone, Globe, Zap, Users, Award, Mail, Github, Linkedin, Twitter } from 'lucide-react';
 
 export default function About() {
+  const skills = [
+    { name: "React & Next.js", level: 95, icon: <Code className="w-5 h-5" /> },
+    { name: "Mobile Development", level: 90, icon: <Smartphone className="w-5 h-5" /> },
+    { name: "Backend Development", level: 85, icon: <Globe className="w-5 h-5" /> },
+    { name: "UI/UX Design", level: 80, icon: <Zap className="w-5 h-5" /> },
+  ];
+
+  const achievements = [
+    {
+      title: "5+ Years Experience",
+      description: "Building web and mobile applications",
+      icon: <Award className="w-6 h-6" />,
+    },
+    {
+      title: "20+ Projects Completed",
+      description: "From startups to enterprise solutions",
+      icon: <Users className="w-6 h-6" />,
+    },
+    {
+      title: "Open Source Contributor",
+      description: "Contributing to various React and Node.js projects",
+      icon: <Code className="w-6 h-6" />,
+    },
+  ];
+
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-8">
-      <div className="max-w-4xl mx-auto space-y-8">
-        {/* Header */}
-        <div className="glass rounded-2xl p-12 text-center space-y-6">
-          <div className="flex justify-center mb-6">
-            <ThemeAwareAppIcon width={80} height={80} className="rounded-2xl" />
-          </div>
-          
-          <h1 className="text-5xl font-bold" style={{ color: 'var(--foreground)' }}>
-            About EightyThree Apps
-          </h1>
-          
-          <p className="text-xl" style={{ color: 'var(--text-secondary)' }}>
-            Crafting modern web experiences with attention to detail
-          </p>
-        </div>
+    <div className="min-h-screen py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Hero Section */}
+        <div className="text-center mb-20">
+          <div className="glass rounded-3xl p-12 max-w-4xl mx-auto">
+            <div className="space-y-8">
+              <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+                <span className="text-4xl font-bold text-white">83</span>
+              </div>
+              
+              <div className="space-y-4">
+                <h1 className="text-5xl md:text-6xl font-bold" style={{ color: 'var(--foreground)' }}>
+                  Hi, I&apos;m Ben Reed
+                </h1>
+                
+                <p className="text-2xl font-semibold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                  Full-Stack Developer & App Creator
+                </p>
+                
+                <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                  I specialize in creating innovative web and mobile applications that solve real-world problems. 
+                  With a passion for clean code, beautiful design, and cutting-edge technology, I bring ideas to life.
+                </p>
+              </div>
 
-        {/* Content */}
-        <div className="glass-card rounded-xl p-8 space-y-6">
-          <h2 className="text-3xl font-bold" style={{ color: 'var(--foreground)' }}>
-            Our Mission
-          </h2>
-          
-          <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            At EightyThree Apps, we believe in creating web applications that not only function flawlessly 
-            but also provide exceptional user experiences. Our focus on modern design patterns, performance 
-            optimization, and accessibility ensures that every project we deliver meets the highest standards.
-          </p>
-
-          <h3 className="text-2xl font-semibold mt-8" style={{ color: 'var(--foreground)' }}>
-            What We Do
-          </h3>
-          
-          <div className="grid md:grid-cols-2 gap-6 mt-6">
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
-                Web Development
-              </h4>
-              <p style={{ color: 'var(--text-secondary)' }}>
-                Full-stack web applications using modern frameworks like Next.js, React, and Node.js.
-              </p>
-            </div>
-            
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
-                UI/UX Design
-              </h4>
-              <p style={{ color: 'var(--text-secondary)' }}>
-                Beautiful, intuitive interfaces with frosted glass aesthetics and theme-aware design.
-              </p>
-            </div>
-            
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
-                Performance Optimization
-              </h4>
-              <p style={{ color: 'var(--text-secondary)' }}>
-                Fast, efficient applications optimized for speed and user experience.
-              </p>
-            </div>
-            
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
-                Accessibility
-              </h4>
-              <p style={{ color: 'var(--text-secondary)' }}>
-                Inclusive design that works for everyone, regardless of ability or device.
-              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a 
+                  href="mailto:ben@eightythreeapps.com"
+                  className="px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2"
+                  style={{ backgroundColor: 'var(--accent)', color: 'white' }}
+                >
+                  <Mail className="w-5 h-5" />
+                  <span>Get In Touch</span>
+                </a>
+                
+                <a 
+                  href="/apps"
+                  className="px-8 py-4 rounded-xl font-semibold text-lg glass-card transition-all duration-300 hover:scale-105"
+                  style={{ color: 'var(--foreground)' }}
+                >
+                  View My Work
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Contact */}
-        <div className="glass rounded-xl p-8 text-center">
-          <h2 className="text-2xl font-bold mb-4" style={{ color: 'var(--foreground)' }}>
-            Get In Touch
-          </h2>
-          <p className="text-lg mb-6" style={{ color: 'var(--text-secondary)' }}>
-            Ready to start your next project? We&apos;d love to hear from you.
-          </p>
-          <button 
-            className="px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105"
-            style={{ 
-              backgroundColor: 'var(--accent)', 
-              color: 'white' 
-            }}
-          >
-            Contact Us
-          </button>
+        {/* Skills Section */}
+        <div className="mb-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
+              Skills & Expertise
+            </h2>
+            <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
+              A comprehensive overview of my technical skills and areas of expertise.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {skills.map((skill, index) => (
+              <div key={index} className="glass-card rounded-2xl p-8">
+                <div className="space-y-6">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center" 
+                         style={{ backgroundColor: 'var(--accent)', color: 'white' }}>
+                      {skill.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold" style={{ color: 'var(--foreground)' }}>
+                        {skill.name}
+                      </h3>
+                      <div className="mt-2">
+                        <div className="w-full glass rounded-full h-2">
+                          <div 
+                            className="h-2 rounded-full transition-all duration-1000 ease-out"
+                            style={{ 
+                              backgroundColor: 'var(--accent)', 
+                              width: `${skill.level}%` 
+                            }}
+                          ></div>
+                        </div>
+                        <span className="text-sm mt-1 block" style={{ color: 'var(--text-muted)' }}>
+                          {skill.level}% proficiency
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Achievements */}
+        <div className="mb-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
+              Achievements
+            </h2>
+            <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
+              Key milestones and accomplishments in my development journey.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {achievements.map((achievement, index) => (
+              <div key={index} className="glass-card rounded-2xl p-8 text-center">
+                <div className="space-y-6">
+                  <div className="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center" 
+                       style={{ backgroundColor: 'var(--accent)', color: 'white' }}>
+                    {achievement.icon}
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <h3 className="text-2xl font-bold" style={{ color: 'var(--foreground)' }}>
+                      {achievement.title}
+                    </h3>
+                    <p className="text-lg" style={{ color: 'var(--text-secondary)' }}>
+                      {achievement.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Story Section */}
+        <div className="mb-20">
+          <div className="glass rounded-2xl p-12">
+            <div className="max-w-4xl mx-auto space-y-8">
+              <h2 className="text-4xl font-bold text-center mb-8" style={{ color: 'var(--foreground)' }}>
+                My Story
+              </h2>
+              
+              <div className="prose prose-lg max-w-none" style={{ color: 'var(--text-secondary)' }}>
+                <p className="text-xl leading-relaxed mb-6">
+                  My journey in software development began over 5 years ago when I discovered my passion for 
+                  creating digital solutions that make a real difference. What started as curiosity about how 
+                  websites work has evolved into a deep expertise in full-stack development.
+                </p>
+                
+                <p className="text-xl leading-relaxed mb-6">
+                  I specialize in modern web technologies like React, Next.js, and Node.js, but I&apos;m always 
+                  exploring new frameworks and tools. My approach combines technical excellence with user-centered 
+                  design, ensuring that every application I build is both powerful and intuitive.
+                </p>
+                
+                <p className="text-xl leading-relaxed">
+                  When I&apos;m not coding, you&apos;ll find me writing about development best practices, 
+                  contributing to open source projects, or exploring the latest trends in mobile app development. 
+                  I believe in continuous learning and sharing knowledge with the developer community.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Contact Section */}
+        <div className="text-center">
+          <div className="glass rounded-2xl p-12 max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
+              Let&apos;s Work Together
+            </h2>
+            
+            <p className="text-xl mb-8" style={{ color: 'var(--text-secondary)' }}>
+              Have a project in mind? I&apos;d love to hear about it and explore how we can bring your ideas to life.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <a 
+                href="mailto:ben@eightythreeapps.com"
+                className="px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2"
+                style={{ backgroundColor: 'var(--accent)', color: 'white' }}
+              >
+                <Mail className="w-5 h-5" />
+                <span>Send Email</span>
+              </a>
+              
+              <a 
+                href="/apps"
+                className="px-8 py-4 rounded-xl font-semibold text-lg glass-card transition-all duration-300 hover:scale-105"
+                style={{ color: 'var(--foreground)' }}
+              >
+                View Portfolio
+              </a>
+            </div>
+
+            <div className="flex justify-center space-x-6">
+              <a 
+                href="https://github.com/eightythreeapps"
+                className="p-3 rounded-xl glass-card hover:scale-110 transition-all duration-300"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                <Github className="w-6 h-6" />
+              </a>
+              <a 
+                href="https://linkedin.com/in/benreed"
+                className="p-3 rounded-xl glass-card hover:scale-110 transition-all duration-300"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                <Linkedin className="w-6 h-6" />
+              </a>
+              <a 
+                href="https://twitter.com/eightythreeapps"
+                className="p-3 rounded-xl glass-card hover:scale-110 transition-all duration-300"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                <Twitter className="w-6 h-6" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
