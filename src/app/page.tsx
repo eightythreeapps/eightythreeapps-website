@@ -86,7 +86,7 @@ export default function Home() {
                   <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>Apps in Development</div>
                 </div>
                 <div className="glass-card p-4 rounded-xl">
-                  <div className="text-2xl font-bold" style={{ color: 'var(--accent)' }}>5+</div>
+                  <div className="text-2xl font-bold" style={{ color: 'var(--accent)' }}>20+</div>
                   <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>Years Building</div>
                 </div>
                 <div className="glass-card p-4 rounded-xl">
