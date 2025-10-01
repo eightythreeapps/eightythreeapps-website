@@ -223,32 +223,6 @@ export default function Blog() {
           </div>
         </div>
 
-        {/* Newsletter Signup */}
-        <div className="mt-20">
-          <div className="glass rounded-2xl p-12 text-center max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
-              Stay Updated
-            </h2>
-            <p className="text-xl mb-8" style={{ color: 'var(--text-secondary)' }}>
-              Get notified when I publish new articles about web development, mobile apps, and technology.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-              <input 
-                type="email" 
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-xl glass-card border-0 focus:outline-none focus:ring-2 focus:ring-opacity-50"
-                style={{ 
-                  backgroundColor: 'var(--glass-bg)', 
-                  color: 'var(--foreground)'
-                }}
-              />
-              <button className="px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
-                      style={{ backgroundColor: 'var(--accent)', color: 'white' }}>
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

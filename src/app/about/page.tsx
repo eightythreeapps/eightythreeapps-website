@@ -1,4 +1,4 @@
-import { Code, Smartphone, Globe, Zap, Users, Award, Mail, Github, Linkedin, Twitter } from 'lucide-react';
+import { Code, Smartphone, Globe, Zap, Users, Award } from 'lucide-react';
 
 export default function About() {
   const skills = [
@@ -52,24 +52,6 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="mailto:ben@eightythreeapps.com"
-                  className="px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2"
-                  style={{ backgroundColor: 'var(--accent)', color: 'white' }}
-                >
-                  <Mail className="w-5 h-5" />
-                  <span>Get In Touch</span>
-                </a>
-                
-                <a 
-                  href="/apps"
-                  className="px-8 py-4 rounded-xl font-semibold text-lg glass-card transition-all duration-300 hover:scale-105"
-                  style={{ color: 'var(--foreground)' }}
-                >
-                  View My Work
-                </a>
-              </div>
             </div>
           </div>
         </div>
@@ -183,61 +165,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Contact Section */}
-        <div className="text-center">
-          <div className="glass rounded-2xl p-12 max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
-              Let&apos;s Work Together
-            </h2>
-            
-            <p className="text-xl mb-8" style={{ color: 'var(--text-secondary)' }}>
-              Have a project in mind? I&apos;d love to hear about it and explore how we can bring your ideas to life.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <a 
-                href="mailto:ben@eightythreeapps.com"
-                className="px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2"
-                style={{ backgroundColor: 'var(--accent)', color: 'white' }}
-              >
-                <Mail className="w-5 h-5" />
-                <span>Send Email</span>
-              </a>
-              
-              <a 
-                href="/apps"
-                className="px-8 py-4 rounded-xl font-semibold text-lg glass-card transition-all duration-300 hover:scale-105"
-                style={{ color: 'var(--foreground)' }}
-              >
-                View Portfolio
-              </a>
-            </div>
-
-            <div className="flex justify-center space-x-6">
-              <a 
-                href="https://github.com/eightythreeapps"
-                className="p-3 rounded-xl glass-card hover:scale-110 transition-all duration-300"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                <Github className="w-6 h-6" />
-              </a>
-              <a 
-                href="https://linkedin.com/in/benreed"
-                className="p-3 rounded-xl glass-card hover:scale-110 transition-all duration-300"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                <Linkedin className="w-6 h-6" />
-              </a>
-              <a 
-                href="https://twitter.com/eightythreeapps"
-                className="p-3 rounded-xl glass-card hover:scale-110 transition-all duration-300"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                <Twitter className="w-6 h-6" />
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

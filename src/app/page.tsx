@@ -239,38 +239,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="glass rounded-3xl p-12 space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold" style={{ color: 'var(--foreground)' }}>
-              Let&apos;s Work Together
-            </h2>
-            
-            <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-              Have a project in mind? I&apos;d like to hear about it and see if we can make it happen.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/about"
-                className="px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105"
-                style={{ backgroundColor: 'var(--accent)', color: 'white' }}
-              >
-                Get In Touch
-              </Link>
-              
-              <Link 
-                href="/apps"
-                className="px-8 py-4 rounded-xl font-semibold text-lg glass-card transition-all duration-300 hover:scale-105"
-                style={{ color: 'var(--foreground)' }}
-              >
-                View My Work
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

@@ -177,27 +177,6 @@ export default function Apps() {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-20">
-          <div className="glass rounded-2xl p-12 max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
-              Interested in Working Together?
-            </h2>
-            <p className="text-xl mb-8" style={{ color: 'var(--text-secondary)' }}>
-              I&apos;m always excited to collaborate on new projects and bring innovative ideas to life.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105"
-                      style={{ backgroundColor: 'var(--accent)', color: 'white' }}>
-                Start a Project
-              </button>
-              <button className="px-8 py-4 rounded-xl font-semibold text-lg glass-card transition-all duration-300 hover:scale-105"
-                      style={{ color: 'var(--foreground)' }}>
-                View My Resume
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
