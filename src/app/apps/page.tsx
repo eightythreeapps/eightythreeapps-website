@@ -57,11 +57,11 @@ export default function Apps() {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
-            My Apps Portfolio
+            My Apps
           </h1>
           <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            A few apps I&apos;m working on. Some are in beta, others are still in development. 
-            Each one solves a problem I&apos;ve encountered or something I wish existed.
+            Here&apos;s what I&apos;ve been working on. Some are finished, some are works in progress, 
+            and some are probably never going to be finished (but I&apos;ll keep telling myself they will be).
           </p>
         </div>
 

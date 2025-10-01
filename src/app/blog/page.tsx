@@ -68,10 +68,11 @@ export default function Blog() {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
-            Tech Blog
+            My Blog
           </h1>
           <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Insights, tutorials, and thoughts on web development, mobile apps, and the latest in technology.
+            Sometimes I write about web development, mobile apps, and whatever else I&apos;m 
+            thinking about. No promises on how often I&apos;ll actually post though.
           </p>
         </div>
 

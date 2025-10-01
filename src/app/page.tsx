@@ -59,17 +59,17 @@ export default function Home() {
             <div className="space-y-4">
               <h1 className="text-6xl md:text-7xl font-bold tracking-tight">
                 <span className="block" style={{ color: 'var(--foreground)' }}>
-                  Building Apps
+                  Hi, I&apos;m Ben
                 </span>
                 <span className="block bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                  That Matter
+                  I Build Apps
                 </span>
               </h1>
               
               <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed" 
                  style={{ color: 'var(--text-secondary)' }}>
-                I build web and mobile apps that solve real problems. 
-                From iOS apps to web services, I focus on creating useful tools that people actually want to use.
+                Sometimes they&apos;re useful, sometimes they&apos;re just for fun. 
+                Either way, I try to make them not terrible to use.
               </p>
             </div>
 
@@ -100,10 +100,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
-              Featured Apps
+              What I&apos;m Working On
             </h2>
             <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-              A few apps I&apos;m working on. Some are in beta, others are still in development.
+              Here&apos;s what I&apos;ve been tinkering with lately. 
+              Some are actually useful, others... well, they seemed like a good idea at the time.
             </p>
           </div>
 
@@ -184,10 +185,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
-              Latest Insights
+              Occasionally I Write Things
             </h2>
             <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-              Thoughts on web development, mobile apps, and the latest in technology.
+              When I&apos;m not breaking things, I sometimes write about web development, 
+              mobile apps, and whatever else catches my attention.
             </p>
           </div>
 

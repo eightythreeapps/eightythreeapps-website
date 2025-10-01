@@ -47,8 +47,8 @@ export default function About() {
                 </p>
                 
                 <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                  I build web and mobile apps that solve real problems. 
-                  I focus on clean code, good design, and creating things that people actually want to use.
+                  I build apps because I like solving problems and making things work. 
+                  Sometimes they&apos;re actually useful, sometimes they&apos;re just me scratching an itch.
                 </p>
               </div>
 
@@ -146,19 +146,20 @@ export default function About() {
               
               <div className="prose prose-lg max-w-none" style={{ color: 'var(--text-secondary)' }}>
                 <p className="text-xl leading-relaxed mb-6">
-                  I&apos;ve been building apps for about 5 years now. Started with web development, 
-                  then got into mobile apps, and now I work on both. I like solving problems and 
-                  creating things that make life a bit easier.
+                  I&apos;ve been building apps for about 5 years now. Started with web stuff, 
+                  then got curious about mobile apps, and now I do both. Turns out I&apos;m 
+                  pretty good at breaking things and then fixing them.
                 </p>
                 
                 <p className="text-xl leading-relaxed mb-6">
-                  I work with React, Next.js, React Native, and iOS development. I prefer 
-                  keeping things simple and focused on what actually matters to users.
+                  I work with React, Next.js, React Native, and iOS development. I try to 
+                  keep things simple because honestly, most apps are way more complicated than they need to be.
                 </p>
                 
                 <p className="text-xl leading-relaxed">
-                  When I&apos;m not coding, I write about development, contribute to open source projects, 
-                  and try to stay up with what&apos;s new in the field. Always learning something new.
+                  When I&apos;m not coding, I write about development (when I remember to), 
+                  contribute to open source projects, and try to keep up with whatever new 
+                  framework everyone&apos;s excited about this week.
                 </p>
               </div>
             </div>
