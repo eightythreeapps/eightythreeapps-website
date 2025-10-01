@@ -197,6 +197,47 @@ export default function KanoraPage() {
         </div>
       </section>
 
+      {/* Future Ideas */}
+      <section className="mb-20">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: 'var(--foreground)' }}>
+          Future Ideas (if I ever get around to it...)
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="glass-card p-6 rounded-xl">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center" 
+                   style={{ backgroundColor: 'var(--accent)', color: 'var(--background)' }}>
+                <Smartphone className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold" style={{ color: 'var(--foreground)' }}>
+                Mobile Client
+              </h3>
+              <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                A companion mobile app for iOS and Android that connects to your Kanora server. 
+                Stream your music on the go, manage playlists, and control playback remotely.
+              </p>
+            </div>
+          </div>
+
+          <div className="glass-card p-6 rounded-xl">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center" 
+                   style={{ backgroundColor: 'var(--accent)', color: 'var(--background)' }}>
+                <Headphones className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold" style={{ color: 'var(--foreground)' }}>
+                VR Listening Room
+              </h3>
+              <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                A virtual reality client for Meta Quest that creates a virtual listening room. 
+                Browse your music library in 3D space, create immersive listening environments, 
+                and experience your music in a whole new way.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Tech Stack - Compact */}
       <section className="mb-20">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: 'var(--foreground)' }}>
