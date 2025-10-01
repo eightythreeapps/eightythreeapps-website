@@ -39,12 +39,6 @@ export default function Home() {
       date: "2024-01-25",
       readTime: "12 min read",
     },
-    {
-      title: "Building Scalable React Applications",
-      excerpt: "Learn the best practices for creating maintainable and performant React applications.",
-      date: "2024-01-15",
-      readTime: "5 min read",
-    },
   ];
 
   return (
@@ -167,9 +161,10 @@ export default function Home() {
           {/* Apps Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {featuredApps.map((app) => (
-              <div 
+              <Link 
                 key={app.name}
-                className="group glass-card rounded-2xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer"
+                href={app.name === "Kanora" ? "/kanora" : "/apps"}
+                className="group glass-card rounded-2xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer block"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
@@ -207,7 +202,7 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
