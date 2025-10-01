@@ -1,4 +1,4 @@
-import { Github, ExternalLink, Smartphone, Globe, Code } from 'lucide-react';
+import { Github, ExternalLink, Smartphone, Globe, Music } from 'lucide-react';
 
 export default function Apps() {
   const apps = [
@@ -20,16 +20,16 @@ export default function Apps() {
     {
       id: 2,
       name: "Kanora",
-      description: "A music server and player application like Plex. Think iTunes when it was good.",
-      longDescription: "Kanora is a self-hosted music server that lets you organize and stream your music collection. It has a clean interface, supports multiple formats, and works across devices. No subscriptions, no ads, just your music.",
+      description: "A modern self-hosted music streaming solution with web, mobile, and VR clients.",
+      longDescription: "Kanora is a comprehensive music server that brings back the glory days of music management. Built with modern web technologies, it offers web, mobile, desktop, and even VR clients. Features include smart library management, range-based streaming, multi-user support, and cross-platform compatibility. Think iTunes when it was good, but built for the modern web.",
       status: "In Development",
-      category: "Desktop",
-      tech: ["React", "Node.js", "Electron", "Audio Processing"],
-      features: ["Music Library", "Multi-format Support", "Cross-device Sync", "Clean Interface"],
-      icon: <Code className="w-8 h-8" />,
+      category: "Full-Stack",
+      tech: ["Node.js", "Express", "TypeScript", "React", "SQLite", "Drizzle ORM", "React Native", "Three.js"],
+      features: ["Multi-platform Clients", "Smart Library Management", "Range-based Streaming", "JWT Authentication", "SQLite Database", "VR Support"],
+      icon: <Music className="w-8 h-8" />,
       color: "from-cyan-500 to-teal-500",
-      githubUrl: "#",
-      demoUrl: "#",
+      githubUrl: "https://github.com/eightythreeapps/kanora-media-server",
+      demoUrl: "/kanora",
       screenshots: ["/screenshots/kanora-1.png", "/screenshots/kanora-2.png"],
     },
     {
@@ -49,7 +49,7 @@ export default function Apps() {
     },
   ];
 
-  const categories = ["All", "Mobile", "Desktop", "iOS"];
+  const categories = ["All", "Mobile", "Full-Stack", "iOS"];
 
   return (
     <div className="min-h-screen py-20">

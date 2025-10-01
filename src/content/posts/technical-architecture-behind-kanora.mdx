@@ -1,0 +1,371 @@
+---
+title: "The Technical Architecture Behind Kanora"
+excerpt: "A deep dive into how I built a scalable music streaming server using modern web technologies and why I chose this particular stack."
+date: "2024-01-25"
+readTime: "12 min read"
+tags: ["architecture", "nodejs", "typescript", "nx", "monorepo"]
+---
+
+# The Technical Architecture Behind Kanora
+
+After my last post about building Kanora, I got a few questions about the technical decisions I made. So let's dive deep into the architecture and why I chose this particular tech stack.
+
+## The Monorepo Decision
+
+The first big decision was whether to use a monorepo or separate repositories for each application. I went with a monorepo using Nx, and here's why:
+
+### Pros of Monorepo
+- **Shared Code**: Types, utilities, and business logic can be shared across all clients
+- **Atomic Changes**: Update the API and all clients in a single commit
+- **Consistent Tooling**: Same linting, testing, and build processes everywhere
+- **Easier Refactoring**: Change a shared type and see all the places that break
+
+### Cons of Monorepo
+- **Build Times**: Can get slow as the project grows
+- **Complexity**: More moving parts to manage
+- **Deployment**: Need to coordinate deployments across multiple applications
+
+For Kanora, the pros outweighed the cons. The shared types alone save me hours of work, and the atomic changes are crucial when you're iterating on API design.
+
+## Backend Architecture
+
+The backend is built with Node.js, Express, and TypeScript. Here's how it's structured:
+
+### API Server (`apps/api`)
+```
+src/
+├── auth/           # Authentication & authorization
+├── catalog/        # Music library management
+├── streaming/      # Audio streaming endpoints
+├── search/         # Search functionality
+├── users/          # User management
+├── analytics/      # Usage tracking
+├── db/            # Database setup & migrations
+├── middleware/     # Express middleware
+└── types/          # TypeScript definitions
+```
+
+### Database Layer
+I chose **Drizzle ORM** with **SQLite** for the database. Here's why:
+
+**Drizzle ORM**:
+- Type-safe queries
+- Great TypeScript support
+- Lightweight and fast
+- Easy migrations
+
+**SQLite**:
+- Perfect for self-hosted applications
+- No separate database server needed
+- Excellent performance for read-heavy workloads
+- Easy backups (just copy the file)
+
+### Authentication System
+The authentication system uses JWT tokens with refresh tokens for security:
+
+```typescript
+// Simplified auth flow
+const authenticateUser = async (email: string, password: string) => {
+  const user = await db.select().from(users).where(eq(users.email, email));
+  
+  if (!user || !await bcrypt.compare(password, user.passwordHash)) {
+    throw new Error('Invalid credentials');
+  }
+  
+  const accessToken = jwt.sign(
+    { userId: user.id, role: user.role },
+    process.env.JWT_SECRET,
+    { expiresIn: '15m' }
+  );
+  
+  const refreshToken = jwt.sign(
+    { userId: user.id },
+    process.env.REFRESH_SECRET,
+    { expiresIn: '7d' }
+  );
+  
+  return { accessToken, refreshToken, user };
+};
+```
+
+### Streaming Architecture
+Audio streaming is handled with range requests, which allows for:
+- **Seeking**: Jump to any point in a song
+- **Progressive Loading**: Start playing before the entire file is downloaded
+- **Bandwidth Efficiency**: Only download what you need
+
+```typescript
+const streamAudio = async (req: Request, res: Response) => {
+  const { trackId } = req.params;
+  const range = req.headers.range;
+  
+  const track = await getTrackById(trackId);
+  const filePath = track.filePath;
+  
+  if (range) {
+    const parts = range.replace(/bytes=/, "").split("-");
+    const start = parseInt(parts[0], 10);
+    const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+    
+    const chunksize = (end - start) + 1;
+    const file = fs.createReadStream(filePath, { start, end });
+    
+    res.writeHead(206, {
+      'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+      'Accept-Ranges': 'bytes',
+      'Content-Length': chunksize,
+      'Content-Type': 'audio/mpeg',
+    });
+    
+    file.pipe(res);
+  } else {
+    // Stream entire file
+    res.writeHead(200, {
+      'Content-Length': fileSize,
+      'Content-Type': 'audio/mpeg',
+    });
+    fs.createReadStream(filePath).pipe(res);
+  }
+};
+```
+
+## Frontend Architecture
+
+### Web Client (`apps/web`)
+The web client is built with React, Vite, and Tailwind CSS. It uses a service-based architecture:
+
+```typescript
+// API service layer
+class ApiService {
+  private baseUrl: string;
+  private token: string | null = null;
+  
+  constructor(baseUrl: string) {
+    this.baseUrl = baseUrl;
+  }
+  
+  setToken(token: string) {
+    this.token = token;
+  }
+  
+  async request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
+    const url = `${this.baseUrl}${endpoint}`;
+    const headers = {
+      'Content-Type': 'application/json',
+      ...(this.token && { Authorization: `Bearer ${this.token}` }),
+      ...options.headers,
+    };
+    
+    const response = await fetch(url, { ...options, headers });
+    
+    if (!response.ok) {
+      throw new Error(`API Error: ${response.statusText}`);
+    }
+    
+    return response.json();
+  }
+}
+
+// Usage in components
+const useTracks = () => {
+  const [tracks, setTracks] = useState<Track[]>([]);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    apiService.request<Track[]>('/api/tracks')
+      .then(setTracks)
+      .finally(() => setLoading(false));
+  }, []);
+  
+  return { tracks, loading };
+};
+```
+
+### Mobile Client (`apps/mobile`)
+The mobile client uses React Native with Expo. It shares the same API service layer as the web client, but with platform-specific UI components.
+
+### VR Client (`apps/vr`)
+The VR client is built with Three.js and runs on Meta Quest. It's probably the most experimental part of the project - who doesn't want to browse their music library in 3D space?
+
+## Shared Libraries
+
+### Shared Types (`libs/shared-types`)
+All TypeScript definitions are shared across applications:
+
+```typescript
+export interface Track {
+  id: string;
+  title: string;
+  artist: string;
+  album: string;
+  duration: number;
+  filePath: string;
+  artwork?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface Playlist {
+  id: string;
+  name: string;
+  description?: string;
+  tracks: Track[];
+  userId: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+```
+
+### Data Access Layer (`libs/data-access`)
+Common database operations are shared:
+
+```typescript
+export class TrackRepository {
+  constructor(private db: Database) {}
+  
+  async findAll(filters?: TrackFilters): Promise<Track[]> {
+    let query = this.db.select().from(tracks);
+    
+    if (filters?.artist) {
+      query = query.where(eq(tracks.artist, filters.artist));
+    }
+    
+    if (filters?.album) {
+      query = query.where(eq(tracks.album, filters.album));
+    }
+    
+    return query;
+  }
+  
+  async findById(id: string): Promise<Track | null> {
+    const result = await this.db
+      .select()
+      .from(tracks)
+      .where(eq(tracks.id, id))
+      .limit(1);
+    
+    return result[0] || null;
+  }
+}
+```
+
+## Development Workflow
+
+### Local Development
+```bash
+# Start all services
+npm run dev
+
+# Start specific services
+npm run dev:api
+npm run dev:web
+npm run dev:mobile
+```
+
+### Testing Strategy
+- **Unit Tests**: Jest for individual functions and components
+- **Integration Tests**: API endpoints with Supertest
+- **E2E Tests**: Playwright for web client
+- **Coverage**: Minimum 85% coverage requirement
+
+### Build Process
+Nx handles the build process with intelligent caching:
+
+```bash
+# Build all applications
+npm run build
+
+# Build specific application
+npx nx build api
+npx nx build web
+```
+
+## Deployment Strategy
+
+### Docker Deployment
+The entire stack can be deployed with Docker Compose:
+
+```yaml
+version: '3.8'
+services:
+  api:
+    build: .
+    ports:
+      - "3333:3333"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=file:./data/kanora.db
+    volumes:
+      - ./data:/app/data
+      - ./music:/app/music
+  
+  web:
+    build: .
+    ports:
+      - "4200:4200"
+    depends_on:
+      - api
+```
+
+### Manual Deployment
+For those who prefer not to use Docker:
+
+```bash
+# Build production version
+npm run build
+
+# Start the server
+NODE_ENV=production node dist/apps/api/main.js
+```
+
+## Performance Considerations
+
+### Database Optimization
+- **Indexes**: Proper indexing on frequently queried columns
+- **Connection Pooling**: Reuse database connections
+- **Query Optimization**: Use Drizzle's query builder efficiently
+
+### Caching Strategy
+- **Redis**: For session storage and frequently accessed data
+- **CDN**: For static assets and artwork
+- **Browser Caching**: Proper cache headers for audio files
+
+### Streaming Optimization
+- **Range Requests**: Efficient seeking and partial downloads
+- **Compression**: Gzip compression for API responses
+- **Transcoding**: Optional audio transcoding for mobile devices
+
+## Lessons Learned
+
+### What Worked Well
+1. **Monorepo with Nx**: Shared code and atomic changes
+2. **TypeScript**: Catching errors at compile time
+3. **Drizzle ORM**: Type-safe database operations
+4. **Service Architecture**: Clean separation of concerns
+
+### What I'd Do Differently
+1. **Start with Docker**: Should have containerized from the beginning
+2. **More Testing**: Need better test coverage for streaming functionality
+3. **Documentation**: API documentation could be more comprehensive
+4. **Monitoring**: Need better logging and monitoring in production
+
+## The Future
+
+Kanora is still evolving. Here's what I'm working on next:
+
+- **Microservices**: Breaking the monolith into smaller services
+- **Real-time Features**: WebSocket support for collaborative playlists
+- **Machine Learning**: Smart recommendations based on listening habits
+- **Cloud Storage**: Support for cloud-based music libraries
+
+## Conclusion
+
+Building Kanora has been a great exercise in modern web architecture. The monorepo approach with Nx has made development much more efficient, and the shared codebase ensures consistency across all clients.
+
+The biggest challenge has been balancing simplicity with functionality. It's easy to over-engineer a music server, but the goal is to make something that's actually enjoyable to use.
+
+If you're interested in the technical details, check out the [GitHub repository](https://github.com/eightythreeapps/kanora-media-server). The code is open source, and I'm always happy to discuss architecture decisions.
+
+---
+
+*What's your take on monorepos vs. separate repositories? Have you built anything similar? Let me know your thoughts!*

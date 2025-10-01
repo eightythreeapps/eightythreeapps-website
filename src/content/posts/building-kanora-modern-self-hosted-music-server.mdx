@@ -1,0 +1,98 @@
+---
+title: "Building Kanora - A Modern Self-Hosted Music Server"
+excerpt: "Why I decided to build my own music streaming solution when iTunes went downhill and Spotify got expensive."
+date: "2024-01-20"
+readTime: "8 min read"
+tags: ["music", "self-hosted", "nodejs", "react", "architecture"]
+---
+
+# Building Kanora - A Modern Self-Hosted Music Server
+
+Remember when iTunes was actually good? When you could organize your music library, create smart playlists, and everything just worked? Yeah, me too. That's why I started building Kanora.
+
+## The Problem with Modern Music Streaming
+
+Don't get me wrong, I love Spotify as much as the next person. But after years of paying for premium subscriptions and watching my music library get scattered across different platforms, I started to miss the days when I actually owned my music. Plus, have you seen how much Spotify costs these days? It's getting ridiculous.
+
+The final straw was when Apple decided to kill iTunes and replace it with... whatever that Music app is supposed to be. I mean, seriously? It's like they took everything that made iTunes great and threw it in the trash.
+
+So I did what any reasonable developer would do: I decided to build my own music server.
+
+## What is Kanora?
+
+Kanora is a self-hosted music streaming solution that brings back the glory days of music management. Think Plex, but specifically designed for music. It's built with modern web technologies and designed to be fast, reliable, and actually enjoyable to use.
+
+### Key Features
+
+- **Self-hosted**: Your music, your server, your rules
+- **Multi-platform**: Web, mobile (iOS/Android), and even VR clients
+- **Smart Library Management**: Automatic scanning, metadata extraction, and organization
+- **Range-based Streaming**: Efficient streaming that doesn't eat your bandwidth
+- **Playlist Management**: Create, edit, and share your music collections
+- **Authentication**: Secure user management with role-based access
+
+## The Tech Stack
+
+I built Kanora using a monorepo architecture with Nx, which makes managing multiple applications a breeze. Here's what's under the hood:
+
+### Backend (Node.js + Express + TypeScript)
+- **Express.js** for the API server
+- **Drizzle ORM** with SQLite for the database
+- **JWT** for authentication
+- **FFmpeg** for audio transcoding
+- **Music-metadata** for extracting song information
+- **BullMQ** for background job processing
+
+### Frontend Applications
+- **Web Client**: React with Vite and Tailwind CSS
+- **Mobile**: React Native with Expo
+- **VR Client**: Three.js for Meta Quest
+- **Desktop**: Electron wrapper
+
+### Shared Libraries
+- **Shared Types**: TypeScript definitions used across all apps
+- **Data Access**: Common database operations
+- **UI Components**: Reusable components with Radix UI
+
+## Why This Architecture?
+
+The monorepo approach might seem like overkill for a personal project, but it's actually perfect for something like Kanora. Each client (web, mobile, VR) needs to communicate with the same API, so sharing types and data access logic makes development much faster.
+
+Plus, with Nx handling the build process, I can develop all the applications simultaneously without losing my mind trying to manage separate repositories.
+
+## The Development Process
+
+Building Kanora has been... interesting. Here are some of the challenges I've faced:
+
+### 1. Audio Streaming
+Getting audio streaming right is harder than it looks. You need to handle range requests, support different audio formats, and make sure everything works smoothly across different devices. The range-based streaming was particularly tricky to implement correctly.
+
+### 2. Metadata Extraction
+Music files come in all shapes and sizes, and extracting metadata consistently is a nightmare. Some files have embedded artwork, others don't. Some have proper ID3 tags, others... well, let's just say they're creative.
+
+### 3. Database Design
+Designing a database schema for a music library is surprisingly complex. You need to handle artists, albums, tracks, playlists, user preferences, and all the relationships between them. And don't get me started on handling various artist name formats.
+
+### 4. Cross-Platform Compatibility
+Making sure the same API works for web browsers, mobile apps, and VR headsets requires careful consideration of different capabilities and limitations.
+
+## What's Next?
+
+Kanora is still very much a work in progress. I'm currently focusing on:
+
+- **Mobile App**: Getting the React Native client polished
+- **VR Experience**: Making music listening in VR actually enjoyable
+- **Advanced Playlists**: Smart playlists that actually work
+- **Social Features**: Sharing playlists and discovering new music
+
+## The Bottom Line
+
+Building Kanora has been a great learning experience. It's reminded me why I love development - there's something satisfying about solving problems that actually matter to you. Plus, having complete control over your music library is pretty awesome.
+
+If you're interested in following the development of Kanora, you can check out the [GitHub repository](https://github.com/eightythreeapps/kanora-media-server). It's open source, so feel free to contribute or just take a look at how it's built.
+
+And if you're thinking about building your own music server, my advice is: do it. It's more work than you think, but it's also more rewarding than you'd expect.
+
+---
+
+*Have you ever built something because the existing solutions just weren't good enough? Let me know in the comments below (if I ever add comments to this blog).*

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Code, Smartphone, Globe } from 'lucide-react';
+import { ArrowRight, Smartphone, Globe, Music } from 'lucide-react';
 
 export default function Home() {
   const featuredApps = [
@@ -12,10 +12,10 @@ export default function Home() {
     },
     {
       name: "Kanora",
-      description: "A music server and player application like Plex. Think iTunes when it was good.",
+      description: "A modern self-hosted music streaming solution with web, mobile, and VR clients.",
       status: "In Development",
-      tech: ["React", "Node.js", "Audio Processing"],
-      icon: <Code className="w-6 h-6" />,
+      tech: ["Node.js", "React", "TypeScript", "SQLite"],
+      icon: <Music className="w-6 h-6" />,
     },
     {
       name: "GiftBoxd",
@@ -28,22 +28,22 @@ export default function Home() {
 
   const recentPosts = [
     {
+      title: "Building Kanora - A Modern Self-Hosted Music Server",
+      excerpt: "Why I decided to build my own music streaming solution when iTunes went downhill and Spotify got expensive.",
+      date: "2024-01-20",
+      readTime: "8 min read",
+    },
+    {
+      title: "The Technical Architecture Behind Kanora",
+      excerpt: "A deep dive into how I built a scalable music streaming server using modern web technologies.",
+      date: "2024-01-25",
+      readTime: "12 min read",
+    },
+    {
       title: "Building Scalable React Applications",
       excerpt: "Learn the best practices for creating maintainable and performant React applications.",
       date: "2024-01-15",
       readTime: "5 min read",
-    },
-    {
-      title: "The Future of Mobile Development",
-      excerpt: "Exploring the latest trends in mobile app development and cross-platform solutions.",
-      date: "2024-01-10",
-      readTime: "7 min read",
-    },
-    {
-      title: "Design Systems That Scale",
-      excerpt: "Creating consistent and scalable design systems for modern applications.",
-      date: "2024-01-05",
-      readTime: "6 min read",
     },
   ];
 
