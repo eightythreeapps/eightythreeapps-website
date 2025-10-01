@@ -21,12 +21,12 @@ export default function Apps() {
     {
       id: 2,
       name: "Kanora",
-      description: "A modern self-hosted music streaming solution with web, mobile, and VR clients.",
-      longDescription: "Kanora is a comprehensive music server that brings back the glory days of music management. Built with modern web technologies, it offers web, mobile, desktop, and even VR clients. Features include smart library management, range-based streaming, multi-user support, and cross-platform compatibility. Think iTunes when it was good, but built for the modern web.",
+      description: "A desktop music server built with Electron. Runs on macOS, Windows, and Raspberry Pi.",
+      longDescription: "Kanora is a desktop music server that brings back the glory days of music management. Built with Electron and modern web technologies, it runs natively on macOS, Windows, and Raspberry Pi. Features include smart library management, efficient streaming, multi-user support, and a clean interface designed specifically for music. Think iTunes when it was good, but built for the modern desktop with cross-platform support.",
       status: "In Development",
-      category: "Full-Stack",
-      tech: ["Node.js", "Express", "TypeScript", "React", "SQLite", "Drizzle ORM", "React Native", "Three.js"],
-      features: ["Multi-platform Clients", "Smart Library Management", "Range-based Streaming", "JWT Authentication", "SQLite Database", "VR Support"],
+      category: "Desktop",
+      tech: ["Electron", "Node.js", "React", "SQLite", "TypeScript", "Drizzle ORM"],
+      features: ["Desktop Application", "Smart Library Management", "Multi-platform Support", "Efficient Streaming", "Multi-user Support", "Raspberry Pi Compatible"],
       icon: <Music className="w-8 h-8" />,
       color: "from-cyan-500 to-teal-500",
       githubUrl: "https://github.com/eightythreeapps/kanora-media-server",
@@ -50,7 +50,7 @@ export default function Apps() {
     },
   ];
 
-  const categories = ["All", "Mobile", "Full-Stack", "iOS"];
+  const categories = ["All", "Mobile", "Desktop", "iOS"];
 
   return (
     <div className="min-h-screen py-20">

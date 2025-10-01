@@ -20,8 +20,8 @@ export default function KanoraPage() {
     },
     {
       icon: <Globe className="w-6 h-6" />,
-      title: "Access Anywhere",
-      description: "Web, mobile, desktop, and even VR clients. Your music follows you wherever you go, on whatever device you're using."
+      title: "Cross-Platform Desktop App",
+      description: "Runs natively on macOS, Windows, and Raspberry Pi. Built with Electron for true desktop performance."
     }
   ];
 
@@ -45,9 +45,9 @@ export default function KanoraPage() {
   ];
 
   const techStack = [
-    { category: "Backend", tech: ["Node.js", "Express", "TypeScript", "SQLite"] },
-    { category: "Frontend", tech: ["React", "React Native", "Three.js", "Electron"] },
-    { category: "Tools", tech: ["Nx", "Docker", "FFmpeg", "JWT"] }
+    { category: "Desktop", tech: ["Electron", "Node.js", "React", "TypeScript"] },
+    { category: "Database", tech: ["SQLite", "Drizzle ORM", "FFmpeg"] },
+    { category: "Platforms", tech: ["macOS", "Windows", "Raspberry Pi"] }
   ];
 
   return (
@@ -66,13 +66,13 @@ export default function KanoraPage() {
           </h1>
           
           <p className="text-2xl font-semibold bg-gradient-to-r from-cyan-400 to-teal-500 bg-clip-text text-transparent">
-            Self-Hosted Music Streaming
+            Desktop Music Server
           </p>
           
           <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
             Remember when iTunes was actually good? When you could organize your music library, 
             create smart playlists, and everything just worked? Kanora brings that back, 
-            but built for the modern web with web, mobile, desktop, and VR clients.
+            but built with Electron for macOS, Windows, and Raspberry Pi.
           </p>
         </div>
       </section>
@@ -142,9 +142,9 @@ export default function KanoraPage() {
               Currently Building
             </h2>
             <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-              Kanora is actively being developed with a focus on core functionality, 
-              mobile apps, and VR experience. The web client is functional, 
-              and the API is stable for development use.
+              Kanora is actively being developed as a desktop application. 
+              The core functionality is working, with focus on library management, 
+              streaming, and cross-platform compatibility.
             </p>
           </div>
         </div>
@@ -178,7 +178,7 @@ export default function KanoraPage() {
             </h3>
             <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               All the good parts of iTunes (library management, smart playlists) 
-              but with modern web technology and cross-platform support.
+              but built with modern web technologies and running as a true desktop app.
             </p>
           </div>
 
@@ -191,7 +191,7 @@ export default function KanoraPage() {
             </h3>
             <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               Focused specifically on music with better organization, 
-              faster streaming, and a cleaner interface designed for audio.
+              faster streaming, and a cleaner interface designed for desktop use.
             </p>
           </div>
         </div>

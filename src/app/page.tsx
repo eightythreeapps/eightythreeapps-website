@@ -12,9 +12,9 @@ export default function Home() {
     },
     {
       name: "Kanora",
-      description: "A modern self-hosted music streaming solution with web, mobile, and VR clients.",
+      description: "A desktop music server built with Electron. Runs on macOS, Windows, and Raspberry Pi.",
       status: "In Development",
-      tech: ["Node.js", "React", "TypeScript", "SQLite"],
+      tech: ["Electron", "Node.js", "React", "SQLite"],
       icon: <Music className="w-6 h-6" />,
     },
     {
