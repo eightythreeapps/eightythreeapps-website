@@ -63,18 +63,13 @@ export default function Home() {
             {/* Left Column - Main Content */}
             <div className="space-y-8">
               <div className="space-y-6">
-                <div className="inline-flex items-center px-4 py-2 rounded-full glass-card text-sm font-medium" style={{ color: 'var(--accent)' }}>
-                  <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2 animate-pulse"></span>
-                  Available for projects
-                </div>
-                
                 <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
                   <span className="block" style={{ color: 'var(--foreground)' }}>
                     Hi, I&apos;m Ben
                   </span>
-                <span className="block bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
-                  I make stuff
-                </span>
+                  <span className="block bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
+                    I make stuff
+                  </span>
                 </h1>
                 
                 <p className="text-xl md:text-2xl leading-relaxed max-w-2xl" 
