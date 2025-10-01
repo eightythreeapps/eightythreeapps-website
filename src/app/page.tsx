@@ -250,71 +250,30 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Featured Post */}
-            <div className="lg:col-span-2">
-              <Link 
-                href="/blog"
-                className="group glass-card rounded-3xl p-8 hover:scale-105 transition-all duration-300 block"
-              >
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between text-sm" 
-                       style={{ color: 'var(--text-muted)' }}>
-                    <span>{recentPosts[0].date}</span>
-                    <span>{recentPosts[0].readTime}</span>
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold group-hover:opacity-80 transition-opacity" 
-                      style={{ color: 'var(--foreground)' }}>
-                    {recentPosts[0].title}
-                  </h3>
-                  
-                  <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                    {recentPosts[0].excerpt}
-                  </p>
-                  
-                  <div className="flex items-center space-x-2 pt-4">
-                    <span className="text-sm font-medium" style={{ color: 'var(--accent)' }}>
-                      Read More
-                    </span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" 
-                                style={{ color: 'var(--accent)' }} />
-                  </div>
-                </div>
-              </Link>
-            </div>
-
-            {/* Side Posts */}
-            <div className="space-y-6">
-              {recentPosts.slice(1).map((post, index) => (
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-4">
+              {recentPosts.map((post, index) => (
                 <Link 
                   key={index}
                   href="/blog"
-                  className="group glass-card rounded-2xl p-6 hover:scale-105 transition-all duration-300 block"
+                  className="group glass-card rounded-xl p-6 hover:scale-105 transition-all duration-300 block"
                 >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between text-sm" 
-                         style={{ color: 'var(--text-muted)' }}>
-                      <span>{post.date}</span>
-                      <span>{post.readTime}</span>
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold group-hover:opacity-80 transition-opacity mb-2" 
+                          style={{ color: 'var(--foreground)' }}>
+                        {post.title}
+                      </h3>
+                      <p className="text-base leading-relaxed mb-2" style={{ color: 'var(--text-secondary)' }}>
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center space-x-4 text-sm" style={{ color: 'var(--text-muted)' }}>
+                        <span>{post.date}</span>
+                        <span>{post.readTime}</span>
+                      </div>
                     </div>
-                    
-                    <h3 className="text-lg font-bold group-hover:opacity-80 transition-opacity" 
-                        style={{ color: 'var(--foreground)' }}>
-                      {post.title}
-                    </h3>
-                    
-                    <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                      {post.excerpt}
-                    </p>
-                    
-                    <div className="flex items-center space-x-2 pt-2">
-                      <span className="text-sm font-medium" style={{ color: 'var(--accent)' }}>
-                        Read More
-                      </span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" 
-                                  style={{ color: 'var(--accent)' }} />
-                    </div>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform ml-4" 
+                                style={{ color: 'var(--accent)' }} />
                   </div>
                 </Link>
               ))}
