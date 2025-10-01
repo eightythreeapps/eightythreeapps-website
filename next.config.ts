@@ -9,7 +9,6 @@ const nextConfig: NextConfig = {
   },
   output: 'export',
   basePath: isProd ? '/eightythreeapps-website' : '',
-  assetPrefix: isProd ? '/eightythreeapps-website' : '',
   trailingSlash: true,
   images: {
     unoptimized: true,

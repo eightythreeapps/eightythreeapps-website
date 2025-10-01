@@ -52,19 +52,11 @@ export default function Logo({
     };
   }, []);
 
-  // Get the correct asset path based on environment
-  const getAssetPath = (path: string) => {
-    if (typeof window !== 'undefined' && window.location.pathname.startsWith('/eightythreeapps-website')) {
-      return `/eightythreeapps-website${path}`;
-    }
-    return path;
-  };
-
   if (!mounted) {
     // Show light logo by default during SSR
     return (
       <Image
-        src={getAssetPath("/assets/logo-light.png")}
+        src="/assets/logo-light.png"
         alt={alt}
         width={width}
         height={height}
@@ -76,7 +68,7 @@ export default function Logo({
 
   return (
     <Image
-      src={isDark ? getAssetPath("/assets/logo-dark.png") : getAssetPath("/assets/logo-light.png")}
+      src={isDark ? "/assets/logo-dark.png" : "/assets/logo-light.png"}
       alt={alt}
       width={width}
       height={height}
