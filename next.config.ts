@@ -1,12 +1,15 @@
 import { NextConfig } from 'next';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   experimental: {
     mdxRs: true,
   },
   output: 'export',
-  basePath: '/eightythreeapps-website',
+  basePath: isProd ? '/eightythreeapps-website' : '',
+  assetPrefix: isProd ? '/eightythreeapps-website' : '',
   trailingSlash: true,
   images: {
     unoptimized: true,
