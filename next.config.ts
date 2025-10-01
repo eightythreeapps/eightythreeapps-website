@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
     mdxRs: true,
   },
   output: 'export',
+  basePath: '/eightythreeapps-website',
   trailingSlash: true,
   images: {
     unoptimized: true,
