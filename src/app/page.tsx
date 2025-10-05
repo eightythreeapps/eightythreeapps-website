@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Smartphone, Globe, Music } from 'lucide-react';
+import { ArrowRight, Smartphone, Globe, Music, Code, Database } from 'lucide-react';
 import { getAllPosts } from '@/lib/blog';
 
 export default function Home() {
@@ -25,6 +25,53 @@ export default function Home() {
       tech: ["iOS", "Swift", "Core Data"],
       icon: <Globe className="w-6 h-6" />,
     },
+  ];
+
+  const techStack = [
+    {
+      category: "iOS Development",
+      description: "Native iOS applications with Swift and UIKit. My primary expertise and passion.",
+      icon: <Smartphone className="w-6 h-6" />,
+      technologies: [
+        { name: "Swift", level: 95, color: "from-orange-500 to-red-500" },
+        { name: "iOS SDK", level: 95, color: "from-gray-600 to-gray-800" },
+        { name: "UIKit", level: 90, color: "from-blue-500 to-blue-600" },
+        { name: "Core Data", level: 85, color: "from-teal-500 to-cyan-500" },
+      ]
+    },
+    {
+      category: "Frontend Development",
+      description: "Building modern web applications with AI-assisted development using Claude and ChatGPT.",
+      icon: <Code className="w-6 h-6" />,
+      technologies: [
+        { name: "React", level: 70, color: "from-cyan-500 to-blue-500" },
+        { name: "Next.js", level: 70, color: "from-slate-700 to-slate-900" },
+        { name: "Vue.js", level: 60, color: "from-emerald-500 to-teal-600" },
+        { name: "TypeScript", level: 75, color: "from-blue-600 to-blue-700" },
+      ]
+    },
+    {
+      category: "Mobile Cross-Platform",
+      description: "Cross-platform mobile development when native isn't required.",
+      icon: <Globe className="w-6 h-6" />,
+      technologies: [
+        { name: "React Native", level: 65, color: "from-cyan-500 to-blue-600" },
+        { name: "Expo", level: 60, color: "from-indigo-500 to-purple-600" },
+        { name: "Electron", level: 70, color: "from-teal-400 to-cyan-500" },
+        { name: "Progressive Web Apps", level: 65, color: "from-purple-500 to-pink-500" },
+      ]
+    },
+    {
+      category: "Backend & Architecture",
+      description: "Server-side development and system architecture design—planning is my superpower.",
+      icon: <Database className="w-6 h-6" />,
+      technologies: [
+        { name: "System Architecture", level: 95, color: "from-indigo-600 to-purple-600" },
+        { name: "Node.js", level: 70, color: "from-green-600 to-green-700" },
+        { name: "SQLite", level: 80, color: "from-blue-500 to-blue-600" },
+        { name: "REST APIs", level: 85, color: "from-teal-500 to-emerald-600" },
+      ]
+    }
   ];
 
   const recentPosts = getAllPosts().slice(0, 2);
@@ -64,12 +111,12 @@ export default function Home() {
               {/* Quick Stats */}
               <div className="flex flex-wrap gap-6">
                 <div className="glass-card p-4 rounded-xl">
-                  <div className="text-2xl font-bold" style={{ color: 'var(--accent)' }}>3</div>
-                  <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>Apps in Development</div>
+                  <div className="text-2xl font-bold" style={{ color: 'var(--accent)' }}>18+</div>
+                  <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>Years Building</div>
                 </div>
                 <div className="glass-card p-4 rounded-xl">
-                  <div className="text-2xl font-bold" style={{ color: 'var(--accent)' }}>20+</div>
-                  <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>Years Building</div>
+                  <div className="text-2xl font-bold" style={{ color: 'var(--accent)' }}>3</div>
+                  <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>Apps in Development</div>
                 </div>
                 <div className="glass-card p-4 rounded-xl">
                   <div className="text-2xl font-bold" style={{ color: 'var(--accent)' }}>∞</div>
@@ -201,6 +248,91 @@ export default function Home() {
               style={{ color: 'var(--foreground)' }}
             >
               <span>View All Apps</span>
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack Section */}
+      <section className="py-20 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 rounded-full glass-card text-sm font-medium mb-6" style={{ color: 'var(--accent)' }}>
+              <span className="w-2 h-2 bg-cyan-500 rounded-full mr-2"></span>
+              Technical Skills
+            </div>
+            
+            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
+              My Tech Stack
+            </h2>
+            
+            <p className="text-xl max-w-2xl mx-auto mb-12" style={{ color: 'var(--text-secondary)' }}>
+              Technologies I work with to build modern web and mobile applications. 
+              The bars show how comfortable I am with each—though let&apos;s be honest, 
+              we&apos;re all just googling things half the time.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {techStack.map((stack, index) => (
+              <div 
+                key={index}
+                className="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300"
+              >
+                <div className="space-y-6">
+                  {/* Header */}
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" 
+                         style={{ backgroundColor: 'var(--accent)', color: 'var(--background)' }}>
+                      {stack.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--foreground)' }}>
+                        {stack.category}
+                      </h3>
+                      <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                        {stack.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Technology Bars */}
+                  <div className="space-y-4">
+                    {stack.technologies.map((tech, techIndex) => (
+                      <div key={techIndex} className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm font-medium" style={{ color: 'var(--foreground)' }}>
+                            {tech.name}
+                          </span>
+                          <span className="text-xs font-medium" style={{ color: 'var(--text-muted)' }}>
+                            {tech.level}%
+                          </span>
+                        </div>
+                        <div className="relative w-full glass rounded-full h-2 overflow-hidden">
+                          <div 
+                            className={`h-full bg-gradient-to-r ${tech.color} rounded-full transition-all duration-1000 ease-out`}
+                            style={{ 
+                              width: `${tech.level}%`,
+                              animation: `slideIn 1s ease-out ${techIndex * 0.1}s both`
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link 
+              href="/about"
+              className="inline-flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold glass-card hover:scale-105 transition-all duration-300"
+              style={{ color: 'var(--foreground)' }}
+            >
+              <span>Learn More About Me</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
