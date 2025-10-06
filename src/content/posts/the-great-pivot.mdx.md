@@ -3,7 +3,7 @@ title: "The Great Pivot: From Cross-Platform Web Tech to back to Native Developm
 excerpt: "A deep dive into how I built a scalable music streaming server using modern web technologies and why I chose this particular stack."
 date: "2025-10-06"
 readTime: "12 min read"
-tags: ["architecture", "nodejs", "typescript", "nx", "iOS", "macOS"]
+tags: ["architecture", "nodejs", "typescript", "nx", "iOS", "macOS", "crossplatform", "kanora"]
 ---
 
 ## TL;DR
@@ -72,78 +72,6 @@ Every "simple" feature required:
 
 The promise of "write once, run everywhere" had become **"write once, debug everywhere."**
 
-### The 20-Year Lie I Finally Stopped Believing
-
-Here's the truth: **I knew this already.**
-
-For 20 years, I've been in conversations about cross-platform versus native development. Every single time I advocated for the native approach, I got the same response:
-
-> "Yeah, but with cross-platform you only need to write it once..."
-
-And every single time, I watched projects spiral into complexity hell. I watched developers fight frameworks instead of building features. I watched "write once" turn into "write once, then spend months debugging platform-specific edge cases."
-
-But this time, I thought it would be different.
-
-### The AI Tooling Fallacy
-
-When I started Kanora, I genuinely believed that modern AI tooling—Claude, GPT-4, Cursor, Copilot—would eliminate the pain of cross-platform development. If AI could help me write Swift code, surely it could help me navigate Electron's complexity, right?
-
-**Wrong.**
-
-AI tools are incredible at helping you write code. They're excellent at explaining APIs and debugging syntax errors. But they can't fix **fundamental architectural problems**.
-
-When your framework forces you to:
-- Bridge three different process contexts
-- Worry about context isolation and security boundaries
-- Package native binaries differently per platform
-- Debug IPC communication failures
-- Test across multiple OS-specific behaviors
-
-...no amount of AI assistance makes that simple. You're still fighting the framework. You're still maintaining an abstraction layer that adds complexity instead of removing it.
-
-AI can help you write the code faster. It **cannot** make a bad architectural choice good.
-
-### The Hard Truth: Web Tech Is For The Web. ONLY The Web.
-
-Let me be crystal clear about this, because it needs to be said loudly:
-
-**Use web technologies for the web. ONLY the web.**
-
-Not for:
-- ❌ Desktop applications (unless it's literally a web wrapper like a browser)
-- ❌ Mobile applications (React Native, Ionic—same problems)
-- ❌ Hardware integration
-- ❌ System-level tools
-- ❌ Performance-critical applications
-
-Web technologies are **phenomenal** at what they were designed for: delivering interactive content over HTTP to a browser. HTML/CSS/JavaScript running in a browser is a beautiful, mature platform.
-
-But the moment you try to force web tech into a native context, you're building a house of cards.
-
-### Why We Keep Falling For It
-
-The appeal is obvious:
-- Web developers vastly outnumber native developers
-- JavaScript has an enormous ecosystem
-- "One codebase" sounds efficient
-- Initial development is genuinely faster
-
-But that initial speed is a **trap**. You pay for it later with:
-- Complexity debt that compounds over time
-- Performance compromises you can't fix
-- Platform limitations you can't escape
-- Developer frustration that kills motivation
-
-The "write once" promise is seductive, but it's fundamentally dishonest. You don't write once. You write once, then spend the rest of the project dealing with the consequences of trying to make one codebase behave like three different platforms.
-
-### Breaking The Cycle
-
-This time, I'm breaking the cycle.
-
-Twenty years of experience finally caught up with my optimism. Kanora doesn't need to be cross-platform at the cost of being good on any platform. It needs to be **excellent** on the platforms it actually targets.
-
-Web tech is for web apps. Native tech is for native apps. Stop trying to blur that line.
-
 ---
 
 ## The Realization: Cross-Platform Web Tech Has Fundamental Limits
@@ -201,22 +129,29 @@ After a particularly frustrating session trying to debug why Electron's `app` ob
 
 ### Why Mac Catalyst?
 
-I'm a macOS user. My 2012 Mac Mini running Monterey is my target hardware. The decision path was clear:
+I'm a macOS user and have been for over 20 years, I like the platform an the ecosystem. My 2012 Mac Mini is still fantastic, it has a 500GB SSD and runs macOS Monterey. This is my target hardware as this is currently sat in my office acting as a plex media server. I don't want to buy any new hardware for my media set up, so it has to run on this. 
+
+So I have decied on:
 
 1. **Primary Platform**: macOS
 2. **Technology**: Swift + SwiftUI
 3. **Deployment Strategy**: Mac Catalyst (iPad app running on Mac)
 
 Why Catalyst specifically?
+Well, the main reason is that I am an iOS developer at heart. I have mever written a macOS application and have spent all my time in UIKit and more recently SwiftUI. I dabbled in Mac development once or twice, but I couldn't get my head around the UI code (I was only ever trying to learn it in the evening anyway, so probably never dedicated enough time to it).
+
+Anyway, using Catalyst gives me:
 
 - ✅ **Single Codebase**: Write once for iPad, iPhone, *and* Mac
 - ✅ **Native Performance**: Real Swift, real Core Data, real AVFoundation
 - ✅ **System Integration**: First-class macOS citizen with proper entitlements
 - ✅ **Modern APIs**: SwiftUI for UI, Combine for reactive patterns
 - ✅ **Backwards Compatibility**: Runs on macOS 12+ (my 2012 Mac Mini)
-- ✅ **Future Proof**: If I want iOS/iPadOS later, it's the same codebase
+- ✅ **Multiplatfrom**: There will be iPhone and iPad apps at some point. It's the same codebase
 
-Mac Catalyst gives me the "write once, deploy multiple places" benefit, but using **actually native code** instead of wrapping a web browser.
+Mac Catalyst gives me the "write once, deploy multiple places" benefit, but using **actually native code** instead of wrapping a web browser. And yes, I am aware that "multiple places" here is under the caveat that they all have to be Apple, but thats my primary target for this project.
+
+I am hoping that AI tooling, REST endpoints etc. will give me options for building for other platforms if I ever choose to.  
 
 ### What We're Keeping: The REST API
 
@@ -253,7 +188,9 @@ This is the **right** separation of concerns:
 
 ## The Planning: 39 User Stories Across 6 Epics
 
-I didn't just throw out the old codebase and start fresh. I carefully analyzed all of Kanora's functionality and broke it down into properly defined user stories.
+I didn't just throw out the old codebase and start fresh. I used Cursor to review the existing project in detail and asked it to pull out all of Kanora's functionality and break it down into properly defined user stories for me. I've found that when given a task such as this, AI excels. You are not asking it to generate code, you are simply asking it to say what it sees and I've been getting good results, as long as you give it a good, detailed prompt. 
+
+It broke it down into:
 
 ### The Epics
 
@@ -328,7 +265,7 @@ All 39 stories are now tracked in the new `kanora-app` repository with detailed 
 └─────────────┘
 ```
 
-Why this matters:
+What this pattern gives me:
 - ✅ **Testable**: Mock services via protocols
 - ✅ **Maintainable**: Clear separation of concerns
 - ✅ **Type-safe**: Swift's compiler catches errors
@@ -382,11 +319,10 @@ For the embedded REST API server, I'm using **Vapor** (a Swift web framework) in
 
 ---
 
-## What This Means: The Hard Truth About Cross-Platform
+## What This Means: The Hard Truth About Cross-Platform and what its good for...
+I've known for years that cross plaform sells the dream but ultimately comes up short. It has its place, sometimes, for simple apps. I think there are some amazing examples... VS Code and Slack for example.
 
-### Cross-Platform Is Great For...
-
-Let me be clear: cross-platform web technologies aren't bad. They're **excellent** for:
+Anything else thats cross platform should just run in the browser, or a browser windows like WebView2. 
 
 - ✅ Business applications (CRUD interfaces)
 - ✅ Communication tools (Slack, Discord)
@@ -394,8 +330,6 @@ Let me be clear: cross-platform web technologies aren't bad. They're **excellent
 - ✅ Prototyping and MVPs
 - ✅ Internal tools
 - ✅ When web deployment is primary and desktop is secondary
-
-### But Not For...
 
 Cross-platform web tech struggles with:
 
