@@ -221,10 +221,10 @@ It broke it down into:
    - Shuffle and repeat modes
 
 5. **REST API Integration** (6 stories)
-   - Embedded HTTP server (using Vapor, native Swift web framework)
-   - JWT authentication
-   - Library, streaming, and playlist endpoints
-   - DTOs for Core Data → JSON serialization
+   - URLSession-based HTTP client for Express API
+   - JWT authentication and token management
+   - Consume library, streaming, and playlist endpoints
+   - Map API responses to Core Data models
 
 6. **UX/Polish** (7 stories)
    - Main window with sidebar navigation
@@ -279,20 +279,12 @@ I chose Core Data over Swift Data because:
 - Better performance for large datasets
 - More control over migrations
 
-### API Integration: DTOs + Vapor
+### API Integration: URLSession + Codable DTOs
 
-The native app will have its own Core Data models, but the REST API will serve DTOs (Data Transfer Objects):
+The native app will consume the Express.js REST API using native Swift networking:
 
 ```swift
-// Core Data model (local)
-@objc(Artist)
-class Artist: NSManagedObject {
-    @NSManaged var id: UUID
-    @NSManaged var name: String
-    @NSManaged var albums: NSSet?
-}
-
-// DTO for API (Codable)
+// API response model (matches Express API)
 struct ArtistDTO: Codable {
     let id: UUID
     let name: String
@@ -300,22 +292,32 @@ struct ArtistDTO: Codable {
     let trackCount: Int
 }
 
-// Extension to convert
-extension Artist {
-    func toDTO() -> ArtistDTO {
-        ArtistDTO(
-            id: id,
-            name: name,
-            albumCount: albums?.count ?? 0,
-            trackCount: albums?.reduce(0) { $0 + ($1.tracks?.count ?? 0) }
-        )
+// Core Data model (local storage)
+@objc(Artist)
+class Artist: NSManagedObject {
+    @NSManaged var id: UUID
+    @NSManaged var name: String
+    @NSManaged var albums: NSSet?
+}
+
+// Service to fetch and sync
+class ArtistService {
+    func fetchArtists() async throws -> [ArtistDTO] {
+        let url = URL(string: "http://localhost:3000/api/artists")!
+        let (data, _) = try await URLSession.shared.data(from: url)
+        return try JSONDecoder().decode([ArtistDTO].self, from: data)
+    }
+    
+    func syncToLocalDatabase(_ dtos: [ArtistDTO], context: NSManagedObjectContext) {
+        // Map DTOs to Core Data and save
     }
 }
 ```
 
-This keeps the API layer clean and prevents Core Data objects from leaking into the API.
-
-For the embedded REST API server, I'm using **Vapor** (a Swift web framework) instead of embedding Node.js. Native all the way down.
+This keeps the separation clean:
+- **Express API**: Continues to serve JSON over HTTP (unchanged)
+- **Native app**: Consumes the API using URLSession (no Node.js embedding needed)
+- **Core Data**: Local caching and offline support
 
 ---
 
