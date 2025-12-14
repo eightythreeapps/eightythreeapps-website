@@ -65,11 +65,13 @@ flowchart TD
     B2 --> B3[Single-issue prompt]
     B3 --> B4[Implement change]
     B4 --> B5[verify.sh]
-    B5 -->|Pass ✅| B6[Close issue]
-    B5 -->|Fail ❌| B3
+  B5 -->|Pass ✅| B6[Close issue]
+  B5 -->|Fail ❌| B3
   end
 
   B0 --> B1
+
+```
 
 
 ⸻
@@ -121,6 +123,7 @@ Right now, verify.sh runs unit tests and linting. As UI tests come online, they�
 
 Here’s how everything now funnels through that single gate:
 
+```mermaid
 flowchart LR
   U[Me] --> V[verify.sh]
   C1[Claude] --> V
@@ -140,6 +143,7 @@ flowchart LR
 
   R -->|Pass ✅| OK[Safe to merge / close issue]
   R -->|Fail ❌| FIX[Fix & iterate]
+```
 
 If the script is good, the build is good.
 And if that isn’t true, the script is what needs fixing.
