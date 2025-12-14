@@ -1,13 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import ReactMarkdown, { Components } from 'react-markdown';
-import { deflateSync } from 'zlib';
+import { deflateRawSync } from 'zlib';
 
 interface MarkdownRendererProps {
   content: string;
 }
 
 const encodeMermaidDiagram = (code: string) => {
-  const compressed = deflateSync(code);
+  // Kroki expects a raw DEFLATE stream, base64url-encoded.
+  // Use UTF-8 bytes to avoid platform-specific encoding quirks.
+  const input = Buffer.from(code, 'utf8');
+  const compressed = deflateRawSync(input);
   return compressed
     .toString('base64')
     .replace(/\+/g, '-')
@@ -18,7 +21,7 @@ const encodeMermaidDiagram = (code: string) => {
 const components: Components = {
   code({ inline, className, children, ...props }) {
     const language = className?.replace('language-', '');
-    const codeContent = String(children).trim();
+    const codeContent = String(children).replace(/\r\n/g, '\n').trim();
 
     if (!inline && language === 'mermaid') {
       const diagramUrl = `https://kroki.io/mermaid/svg/${encodeMermaidDiagram(codeContent)}`;
