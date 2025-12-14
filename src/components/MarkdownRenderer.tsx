@@ -47,5 +47,9 @@ const components: Components = {
 };
 
 export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
-  return <ReactMarkdown components={components}>{content}</ReactMarkdown>;
+  return (
+    <ReactMarkdown className="markdown-content" components={components}>
+      {content}
+    </ReactMarkdown>
+  );
 }
