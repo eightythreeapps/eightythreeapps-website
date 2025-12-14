@@ -23,7 +23,7 @@ I got carried away with what was *possible*, instead of staying focused on what 
 
 ---
 
-## The Moment I Hit Pause
+### The Moment I Hit Pause
 
 The turning point wasn’t a crash or a catastrophic bug. It was the slow realisation that every new AI-assisted feature was making the codebase harder to reason about, not easier.
 
@@ -73,10 +73,7 @@ flowchart TD
 
 ```
 
-
-⸻
-
-Turning a Scary Report Into Work I Could Ship
+### Turning a Scary Report Into Work I Could Ship
 
 The next mistake would have been jumping straight into fixing things.
 
@@ -90,9 +87,8 @@ This separation turned out to be important. AI wasn’t deciding what work exist
 
 From that point on, the issues — not my head — became the source of truth.
 
-⸻
 
-The “Green Builds First” Rule
+### The “Green Builds First” Rule
 
 Here’s the part that’s easy to skip, and the reason a lot of AI-assisted projects slowly rot:
 
@@ -104,9 +100,8 @@ AI helped here too — particularly with some awkward Swift concurrency issues t
 
 Once the build was green, I finally had a known-good point to work from. Only then did it make sense to let AI move things forward again.
 
-⸻
 
-The Verify Script: One Source of Truth, No Arguments
+### The Verify Script: One Source of Truth, No Arguments
 
 The most important thing I added during this reset wasn’t a feature or a refactor — it was a single source of truth for whether the build is acceptable.
 
@@ -148,9 +143,8 @@ flowchart LR
 If the script is good, the build is good.
 And if that isn’t true, the script is what needs fixing.
 
-⸻
 
-Documentation as a Control Mechanism
+### Documentation as a Control Mechanism
 
 With a stable baseline in place, documentation stopped being something to “catch up later” and became part of the feedback loop.
 
@@ -158,9 +152,8 @@ AI was used to cross-check docs against code, flag drift, and surface assumption
 
 Polished documentation that describes a fictional system is worse than no documentation at all.
 
-⸻
 
-How I’m Working Going Forward
+### How I’m Working Going Forward
 
 This wasn’t a one-off cleanup — it’s a change in how I’m building Kanora.
 
@@ -172,9 +165,8 @@ Claude hooks and similar tooling are the natural extension of this. AI shouldn�
 
 Progress is only progress when the script says it is.
 
-⸻
 
-A Final Thought: This Isn’t Anti-AI, or Even Anti-Chaos
+###  Final Thought: This Isn’t Anti-AI, or Even Anti-Chaos
 
 This has turned out to be a really good way to work — just not from day one.
 
@@ -195,5 +187,3 @@ It’s letting me bring projects to life without chaining myself to a desk. A qu
 I’m now exploring how much of this I can trigger from my phone — sending a message to an app and having it kick off audits, prompts, or verification runs back on my Mac. Still thinking it through. Baby steps.
 
 And with a tighter workflow built on everything I’ve outlined here, I can trust it to just get on with the work — quietly and predictably — while I get on with everything else. Speaking of which, it’s probably time to open the wine.
-
----

@@ -5,9 +5,9 @@ import { getAllPostSlugs, getPostBySlug } from '@/lib/blog';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -17,8 +17,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = getPostBySlug(params.slug);
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
 
   if (!post) {
     notFound();
@@ -92,7 +93,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         </header>
 
         {/* Post Content */}
-        <article className="markdown-article max-w-none">
+        <article className="markdown-article max-w-3xl mx-auto">
           <MarkdownRenderer content={post.content} />
         </article>
 
