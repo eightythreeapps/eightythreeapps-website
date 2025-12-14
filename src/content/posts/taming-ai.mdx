@@ -1,0 +1,195 @@
+---
+title: "Taming AI: How I Stopped Kanora Turning Into a Feature Factory"
+excerpt: "A dev journal on using AI to explore fast, then knowing when to slow down, harden foundations, and build real trust into a v1 codebase."
+date: "2025-12-14"
+readTime: "12 min read"
+tags: ["ai", "development", "workflow", "kanora", "dev-journal"]
+---
+
+# Taming AI: How I Stopped Kanora Turning Into a Feature Factory
+
+AI makes it dangerously easy to feel productive.
+
+You ask it for a feature, it gives you code. You ask it for another, it wires that in too. Before long you’ve got something that demos well and looks impressive on the surface. And for a while, that *feels* like real momentum.
+
+That’s where I found myself with **Kanora**.
+
+At one point I had DLNA streaming working — sort of. Recording from USB soundcards — mostly. There were some genuinely interesting bits of engineering in there. But the fundamentals weren’t solid. Unit tests weren’t reliably green, documentation had drifted away from reality, and some of the most trust-critical behaviours — safe metadata edits, previews, undo, clear warnings — simply weren’t there.
+
+AI didn’t create that situation.  
+AI just made it easier for me to ignore it.
+
+I got carried away with what was *possible*, instead of staying focused on what was *safe* and *trustworthy*. And once you do that, you’re not really moving faster — you’re just burning tokens more efficiently.
+
+---
+
+## The Moment I Hit Pause
+
+The turning point wasn’t a crash or a catastrophic bug. It was the slow realisation that every new AI-assisted feature was making the codebase harder to reason about, not easier.
+
+So I stopped asking AI what to build next and asked a much duller question instead:
+
+**“Audit this codebase as if you were deciding whether it’s safe to ship v1.”**
+
+I gave the model a very explicit prompt: treat this as a release-blocking audit, ignore advanced features unless they introduce risk, and judge everything against trust, safety, and core workflows. It had to end with a blunt verdict: *would you trust this app as the only thing touching your music library?*
+
+That constraint mattered. Without it, AI will happily wander off into future ideas. With it, it stayed brutally grounded.
+
+The report that came back didn’t sugar-coat anything:
+- metadata editing lacked previews and undo
+- file operations weren’t atomic and sometimes silently destructive
+- listening stats weren’t reliable because the default playback path never recorded events
+- “non-goals” like remote APIs, AirPlay/DLNA discovery, and iCloud upload flows were leaking into normal usage
+- experimental features could be enabled accidentally with a single toggle
+
+The final verdict was clear: **no**, this wasn’t a v1 I should trust with my own library.
+
+That was uncomfortable — and exactly what I needed.
+
+Here’s the shift in mindset it forced, in one picture:
+
+```mermaid
+flowchart TD
+  subgraph A[Early Phase: Exploration (fast, messy, useful)]
+    A1[Idea or problem] --> A2[Ask AI to build / try approach]
+    A2 --> A3[Code appears]
+    A3 --> A4[Demo works (sometimes)]
+    A4 --> A5[Repeat...]
+    A5 --> A6[(Entropy grows)]
+  end
+
+  A6 --> B0[Pause: "Is this safe to ship?"]
+
+  subgraph B[Later Phase: Execution (slow enough to be safe)]
+    B1[Audit / reality check] --> B2[Focused GitHub issues]
+    B2 --> B3[Single-issue prompt]
+    B3 --> B4[Implement change]
+    B4 --> B5[verify.sh]
+    B5 -->|Pass ✅| B6[Close issue]
+    B5 -->|Fail ❌| B3
+  end
+
+  B0 --> B1
+
+
+⸻
+
+Turning a Scary Report Into Work I Could Ship
+
+The next mistake would have been jumping straight into fixing things.
+
+Instead, I used AI again — but this time purely as a structuring tool.
+
+First, I asked it to turn that audit report into a document of focused GitHub issues. Not tickets yet — just a clean, readable breakdown of release blockers, grouped by theme, each with clear acceptance criteria. That gave me something I could review, reorder, and trim before anything hit the tracker.
+
+Only once that document felt sane did I take the next step: a second prompt to actually create the curated GitHub issues using the GitHub CLI.
+
+This separation turned out to be important. AI wasn’t deciding what work existed — it was executing a conversion of already-agreed work. That kept the backlog sharp instead of bloated.
+
+From that point on, the issues — not my head — became the source of truth.
+
+⸻
+
+The “Green Builds First” Rule
+
+Here’s the part that’s easy to skip, and the reason a lot of AI-assisted projects slowly rot:
+
+If your tests aren’t green, you don’t have a starting point.
+
+Before touching a single release-blocking issue, I forced the repo into a clean state. All unit tests passing. No flaky failures. No “it usually works”.
+
+AI helped here too — particularly with some awkward Swift concurrency issues that were causing instability. That was time well spent, because without a stable baseline, every AI-generated change is guesswork.
+
+Once the build was green, I finally had a known-good point to work from. Only then did it make sense to let AI move things forward again.
+
+⸻
+
+The Verify Script: One Source of Truth, No Arguments
+
+The most important thing I added during this reset wasn’t a feature or a refactor — it was a single source of truth for whether the build is acceptable.
+
+That’s what verify.sh became.
+
+The rule now is brutally simple:
+
+If verify.sh passes, the build is good.
+If it doesn’t, nothing else matters.
+
+It doesn’t matter who runs it — me, Claude, Codex, CI, or a random terminal session. If the script is solid, the build is solid. If it fails, the work isn’t done — no debate, no interpretation.
+
+Right now, verify.sh runs unit tests and linting. As UI tests come online, they’ll be folded into the same script. One command answers the question: is this safe to move forward with?
+
+Here’s how everything now funnels through that single gate:
+
+flowchart LR
+  U[Me] --> V[verify.sh]
+  C1[Claude] --> V
+  C2[Codex] --> V
+  CI[CI runner] --> V
+  P[Phone trigger (future)] --> V
+
+  V --> T[Unit tests]
+  V --> L[Lint / format checks]
+  V --> B[Build sanity checks]
+  V --> UI[UI tests (when added)]
+
+  T --> R{Result}
+  L --> R
+  B --> R
+  UI --> R
+
+  R -->|Pass ✅| OK[Safe to merge / close issue]
+  R -->|Fail ❌| FIX[Fix & iterate]
+
+If the script is good, the build is good.
+And if that isn’t true, the script is what needs fixing.
+
+⸻
+
+Documentation as a Control Mechanism
+
+With a stable baseline in place, documentation stopped being something to “catch up later” and became part of the feedback loop.
+
+AI was used to cross-check docs against code, flag drift, and surface assumptions that existed in code but nowhere else. Importantly, it wasn’t allowed to invent explanations — only to verify and challenge what was already there.
+
+Polished documentation that describes a fictional system is worse than no documentation at all.
+
+⸻
+
+How I’m Working Going Forward
+
+This wasn’t a one-off cleanup — it’s a change in how I’m building Kanora.
+
+All work now starts with GitHub issues and a simple roadmap that’s about sequencing, not dreaming. AI work is always tied to a single issue. One problem, one prompt, one definition of done.
+
+Prompts are deliberately narrow. No “while we’re here”. No opportunistic refactors. If a prompt can’t be reused safely tomorrow, it isn’t finished.
+
+Claude hooks and similar tooling are the natural extension of this. AI shouldn’t say it ran tests — it should actually run verify.sh. If it fails, iteration continues. If it passes, the issue closes.
+
+Progress is only progress when the script says it is.
+
+⸻
+
+A Final Thought: This Isn’t Anti-AI, or Even Anti-Chaos
+
+This has turned out to be a really good way to work — just not from day one.
+
+AI lets you explore ideas you don’t yet have the time or expertise for. It’s brilliant for experimentation. The mistake isn’t letting it move fast — it’s not recognising when the phase has changed.
+
+There’s a moment where you have to say:
+
+“Right. This feature actually matters now. If it’s going to live, it needs to be real.”
+
+That’s when experimentation hardens into engineering.
+
+And just to be clear: none of this is a warning against AI. Quite the opposite. I’ve done the documentation clean-up today. I’ve written verify.sh today. I’ve written and published this post today — all while watching a Christmas film with two young kids, putting up decorations, grabbing last-minute stocking fillers, and prepping a roast dinner.
+
+Try doing that without ChatGPT and Claude.
+
+It’s letting me bring projects to life without chaining myself to a desk. A quick ChatGPT question while the kettle’s on. Nip into the office to kick off a Claude prompt. Easy.
+
+I’m now exploring how much of this I can trigger from my phone — sending a message to an app and having it kick off audits, prompts, or verification runs back on my Mac. Still thinking it through. Baby steps.
+
+And with a tighter workflow built on everything I’ve outlined here, I can trust it to just get on with the work — quietly and predictably — while I get on with everything else. Speaking of which, it’s probably time to open the wine.
+
+---
