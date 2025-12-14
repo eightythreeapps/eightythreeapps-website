@@ -164,6 +164,10 @@ body {
   color: var(--text-secondary);
 }
 
+.markdown-paragraph + .markdown-paragraph {
+  margin-top: 1rem;
+}
+
 .markdown-link {
   color: var(--accent);
   font-weight: 600;
