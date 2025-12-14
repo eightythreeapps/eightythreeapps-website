@@ -1,53 +1,53 @@
 import Link from 'next/link';
-import { Code, Globe, Music, Zap, Users, Smartphone, Headphones, Monitor } from 'lucide-react';
+import { Globe, Music, Smartphone, Headphones, Monitor } from 'lucide-react';
 
 export default function KanoraPage() {
   const keyFeatures = [
     {
+      icon: <Monitor className="w-6 h-6" />,
+      title: "Native Mac Experience",
+      description: "SwiftUI interface with buttery animations, system media controls, and full keyboard support made specifically for macOS."
+    },
+    {
       icon: <Music className="w-6 h-6" />,
-      title: "Your Music, Your Rules",
-      description: "No subscriptions, no ads, no data mining. Just your music collection, organized the way you want it."
+      title: "Serious Library Tools",
+      description: "Import, tidy, and browse huge collections with smart views, metadata editing, and powerful search built on Core Data."
     },
     {
-      icon: <Zap className="w-6 h-6" />,
-      title: "Instant Streaming",
-      description: "Start playing any song immediately, no matter how large your library. Smart caching and range-based streaming make it lightning fast."
-    },
-    {
-      icon: <Users className="w-6 h-6" />,
-      title: "Family-Friendly",
-      description: "Multiple user accounts with individual playlists and preferences. Perfect for households with different musical tastes."
+      icon: <Headphones className="w-6 h-6" />,
+      title: "CD Ripping Built-In",
+      description: "Rip directly from physical media with automatic lookup, accurate metadata, and gapless playback ready files."
     },
     {
       icon: <Globe className="w-6 h-6" />,
-      title: "Cross-Platform Desktop App",
-      description: "Runs natively on macOS, Windows, and Raspberry Pi. Built with Electron for true desktop performance."
+      title: "Designed for Expansion",
+      description: "Embedded REST API and Catalyst groundwork unlock remote control, iPad support, and future mobile clients."
     }
   ];
 
   const problemsSolved = [
     {
-      problem: "Subscription Fatigue",
-      solution: "Stop paying monthly fees for music you already own. Kanora lets you stream your existing collection without any ongoing costs."
+      problem: "Streaming Burnout",
+      solution: "Own your listening again. Kanora manages the files you already have locally without recurring subscriptions or disappearing albums."
     },
     {
-      problem: "Platform Lock-in",
-      solution: "Your music isn't tied to any service. Import from iTunes, Spotify playlists, or any other source and keep it forever."
+      problem: "Desktop Neglect",
+      solution: "Modern services treat the desktop like an afterthought. Kanora is crafted for macOS first, with windows, menus, and shortcuts that feel native."
     },
     {
-      problem: "Privacy Concerns",
-      solution: "Your listening habits stay private. No algorithms tracking what you play, no data being sold to advertisers."
+      problem: "Metadata Chaos",
+      solution: "Import flows clean up tags, artwork, and structure so massive archives stay organized and searchable."
     },
     {
-      problem: "Limited Control",
-      solution: "Full control over your library organization, metadata, and playback experience. Customize everything to your preferences."
+      problem: "No Insight",
+      solution: "Play history, listening stats, and planned remote API access give you observability over every session."
     }
   ];
 
   const techStack = [
-    { category: "Desktop", tech: ["Electron", "Node.js", "React", "TypeScript"] },
-    { category: "Database", tech: ["SQLite", "Drizzle ORM", "FFmpeg"] },
-    { category: "Platforms", tech: ["macOS", "Windows", "Raspberry Pi"] }
+    { category: "App Framework", tech: ["Swift", "SwiftUI", "Combine", "Mac Catalyst"] },
+    { category: "Data & Services", tech: ["Core Data", "AVFoundation", "Swift Concurrency", "Embedded HTTP API (planned)"] },
+    { category: "Platforms", tech: ["macOS Sonoma+", "iPad (Catalyst)", "AirPlay-ready audio engine"] }
   ];
 
   return (
@@ -66,13 +66,12 @@ export default function KanoraPage() {
           </h1>
           
           <p className="text-2xl font-semibold bg-gradient-to-r from-cyan-400 to-teal-500 bg-clip-text text-transparent">
-            Desktop Music Server
+            Native Music Companion
           </p>
           
           <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Remember when iTunes was actually good? When you could organize your music library, 
-            create smart playlists, and everything just worked? Kanora brings that back, 
-            but built with Electron for macOS, Windows, and Raspberry Pi.
+            Remember when iTunes cared about your library? Kanora brings back that feeling with a fresh,
+            fully native SwiftUI app that manages files locally, rips CDs, and plays beautifully through AirPlay.
           </p>
         </div>
       </section>
@@ -142,9 +141,8 @@ export default function KanoraPage() {
               Currently Building
             </h2>
             <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-              Kanora is actively being developed as a desktop application. 
-              The core functionality is working, with focus on library management, 
-              streaming, and cross-platform compatibility.
+              The native macOS build is deep in development with daily dogfooding across a 20k+ track library.
+              CD ripping, playback, smart filtering, and analytics are live while remote access and Catalyst layouts are underway.
             </p>
           </div>
         </div>
@@ -178,7 +176,7 @@ export default function KanoraPage() {
             </h3>
             <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               All the good parts of iTunes (library management, smart playlists) 
-              but built with modern web technologies and running as a true desktop app.
+              rebuilt with SwiftUI, Core Data, and modern concurrency so it feels fast and stable again.
             </p>
           </div>
 
@@ -210,11 +208,11 @@ export default function KanoraPage() {
                 <Smartphone className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold" style={{ color: 'var(--foreground)' }}>
-                Mobile Client
+                Native Companion Apps
               </h3>
               <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                A companion mobile app for iOS and Android that connects to your Kanora server. 
-                Stream your music on the go, manage playlists, and control playback remotely.
+                Catalyst groundwork opens the door for iPad and iPhone companions. 
+                The vision is seamless remote playback, queue management, and offline sync wherever you are.
               </p>
             </div>
           </div>
@@ -271,20 +269,19 @@ export default function KanoraPage() {
         <div className="glass-card rounded-2xl p-8 text-center">
           <div className="space-y-6">
             <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-              Kanora is open source and actively being developed. 
-              Check out the source code, contribute to the project, or just take a look at how it&apos;s built.
+              Kanora is actively being developed in the open. Follow progress, request access, and grab the latest build from the official site.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
-                href="https://github.com/eightythreeapps/kanora-media-server"
+                href="https://kanora.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-2 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105"
                 style={{ backgroundColor: 'var(--accent)', color: 'var(--background)' }}
               >
-                <Code className="w-5 h-5" />
-                <span>View Source Code</span>
+                <Globe className="w-5 h-5" />
+                <span>Visit Kanora.app</span>
               </Link>
               
               <Link 

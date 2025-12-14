@@ -92,13 +92,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         </header>
 
         {/* Post Content */}
-        <article className="prose prose-lg max-w-none">
-          <div
-            className="space-y-6 leading-relaxed"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            <MarkdownRenderer content={post.content} />
-          </div>
+        <article className="markdown-article max-w-none">
+          <MarkdownRenderer content={post.content} />
         </article>
 
         {/* Post Footer */}
