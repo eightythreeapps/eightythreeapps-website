@@ -50,23 +50,23 @@ Here’s the shift in mindset it forced, in one picture:
 
 ```mermaid
 flowchart TD
-  subgraph A[Early Phase: Exploration (fast, messy, useful)]
-    A1[Idea or problem] --> A2[Ask AI to build / try approach]
-    A2 --> A3[Code appears]
-    A3 --> A4[Demo works (sometimes)]
-    A4 --> A5[Repeat...]
+  subgraph A["Early Phase: Exploration (fast, messy, useful)"]
+    A1["Idea or problem"] --> A2["Ask AI to build / try approach"]
+    A2 --> A3["Code appears"]
+    A3 --> A4["Demo works (sometimes)"]
+    A4 --> A5["Repeat..."]
     A5 --> A6[(Entropy grows)]
   end
 
-  A6 --> B0[Pause: "Is this safe to ship?"]
+  A6 --> B0["Pause: \"Is this safe to ship?\""]
 
-  subgraph B[Later Phase: Execution (slow enough to be safe)]
-    B1[Audit / reality check] --> B2[Focused GitHub issues]
-    B2 --> B3[Single-issue prompt]
-    B3 --> B4[Implement change]
-    B4 --> B5[verify.sh]
-  B5 -->|Pass ✅| B6[Close issue]
-  B5 -->|Fail ❌| B3
+  subgraph B["Later Phase: Execution (slow enough to be safe)"]
+    B1["Audit / reality check"] --> B2["Focused GitHub issues"]
+    B2 --> B3["Single-issue prompt"]
+    B3 --> B4["Implement change"]
+    B4 --> B5["verify.sh"]
+    B5 -->|Pass ✅| B6["Close issue"]
+    B5 -->|Fail ❌| B3
   end
 
   B0 --> B1
@@ -125,24 +125,24 @@ Here’s how everything now funnels through that single gate:
 
 ```mermaid
 flowchart LR
-  U[Me] --> V[verify.sh]
-  C1[Claude] --> V
-  C2[Codex] --> V
-  CI[CI runner] --> V
-  P[Phone trigger (future)] --> V
+  U["Me"] --> V["verify.sh"]
+  C1["Claude"] --> V
+  C2["Codex"] --> V
+  CI["CI runner"] --> V
+  P["Phone trigger (future)"] --> V
 
-  V --> T[Unit tests]
-  V --> L[Lint / format checks]
-  V --> B[Build sanity checks]
-  V --> UI[UI tests (when added)]
+  V --> T["Unit tests"]
+  V --> L["Lint / format checks"]
+  V --> B["Build sanity checks"]
+  V --> UI["UI tests (when added)"]
 
   T --> R{Result}
   L --> R
   B --> R
   UI --> R
 
-  R -->|Pass ✅| OK[Safe to merge / close issue]
-  R -->|Fail ❌| FIX[Fix & iterate]
+  R -->|Pass ✅| OK["Safe to merge / close issue"]
+  R -->|Fail ❌| FIX["Fix & iterate"]
 ```
 
 If the script is good, the build is good.
