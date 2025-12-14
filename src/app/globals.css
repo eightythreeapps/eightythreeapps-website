@@ -93,3 +93,16 @@ body {
     opacity: 1;
   }
 }
+.mermaid-diagram-wrapper {
+  margin: 2rem 0;
+  padding: 1.25rem;
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+  overflow-x: auto;
+}
+
+.mermaid-diagram {
+  width: 100%;
+  height: auto;
+}

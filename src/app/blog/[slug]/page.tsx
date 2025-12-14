@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, Tag } from 'lucide-react';
 import { getAllPostSlugs, getPostBySlug } from '@/lib/blog';
-import ReactMarkdown from 'react-markdown';
+import MarkdownRenderer from '@/components/MarkdownRenderer';
 
 interface BlogPostPageProps {
   params: {
@@ -93,11 +93,11 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Post Content */}
         <article className="prose prose-lg max-w-none">
-          <div 
+          <div
             className="space-y-6 leading-relaxed"
             style={{ color: 'var(--text-secondary)' }}
           >
-            <ReactMarkdown>{post.content}</ReactMarkdown>
+            <MarkdownRenderer content={post.content} />
           </div>
         </article>
 
