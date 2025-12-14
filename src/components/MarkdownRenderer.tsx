@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import ReactMarkdown, { Components } from 'react-markdown';
-import { deflateRawSync } from 'zlib';
+import { deflateSync } from 'zlib';
 
 interface MarkdownRendererProps {
   content: string;
@@ -10,7 +10,7 @@ const encodeMermaidDiagram = (code: string) => {
   // Kroki expects a raw DEFLATE stream, base64url-encoded.
   // Use UTF-8 bytes to avoid platform-specific encoding quirks.
   const input = Buffer.from(code, 'utf8');
-  const compressed = deflateRawSync(input);
+  const compressed = deflateSync(input, { level: 9 });
   return compressed
     .toString('base64')
     .replace(/\+/g, '-')
